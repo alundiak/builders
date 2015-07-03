@@ -1,0 +1,32 @@
+{
+  "rules": {
+
+    "no-alert": 1,
+    "no-caller": 0,
+    "no-bitwise": 0,
+    "no-console": 0,
+    "no-debugger": 0,
+    "no-empty": 0,
+    "no-eval": 0,
+    "no-floating-decimal": 0,
+    "no-with": 0,
+    "no-unreachable": 0,
+    "no-undef-init": 0,
+    "no-octal": 0,
+    "no-new-wrappers": 0,
+    "no-new": 0,
+
+    "smarter-eqeqeq": 0,
+    "brace-style": 0,
+    "camelcase": 0,
+    "curly": 0,
+    "eqeqeq": 0,
+    "new-parens": 0,
+    "guard-for-in": 0,
+    "new-cap": 0,
+    "quote-props": 0,
+    "semi": 0,
+    "use-isnan": 0
+
+  }
+}

@@ -1,0 +1,27 @@
+module.exports = function (grunt) {
+	// grunt includes copy of underscore library: 
+	// node_modules/grunt/node_modules/underscore.string/dist/underscore.string.min.js
+	var _ = grunt.util._; // lodash
+
+	// parameter target is a configuration object from Gruntfile.js: mapage.dev in our case
+	grunt.registerTask("mapage", "generates a page html file for us lazy :)", function (target) {
+		console.log("We should have target here: "+ target);
+
+		// define needed variables
+		var context, source, targetConfig, template;
+
+		// we may need to use target.
+		target = target || 'dist';
+
+		this.requiresConfig('mapage.'+target); 
+		
+		targetConfig = grunt.config.get('mapage.'+target);
+		template = grunt.file.read( targetConfig.templateUrl );
+		context = targetConfig.context;
+
+		grunt.file.write(targetConfig.dest, _.template(template, context));
+		grunt.log.writeln('HTML written to ' + targetConfig.dest);
+
+		// fuck, Grunt.JS is really nice tool :)
+	});
+};
