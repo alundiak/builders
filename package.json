@@ -1,7 +1,7 @@
 {
   "name": "builders",
   "version": "0.2.4",
-  "description": "JavaScript Builders",
+  "description": "JavaScript Build Tools",
   "main": "index.js",
   "repository": "https://github.con/alundiak/builders.git",
   "scripts": {
@@ -75,5 +75,8 @@
     "gulp": "*",
     "load-grunt-tasks": "",
     "matchdep": "*"
-  }
+  },
+  "keywords":[
+    "javascript", "nodejs", "grunt", "gulp", "task", "builder", "dist", "generator", "automatization"
+  ]
 }

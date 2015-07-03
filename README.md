@@ -1,7 +1,12 @@
-# JavaScript Builders
+# JavaScript Build Tools Collection
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-> Collection of "grunt contrib packages/modules and gulp and maye other builders usage examples" to work with on any project or get started during study. 
+Collection of well known build tools examples:
+
+* [Grunt.JS](http://gruntjs.com/)
+* [Gulp.JS]((http://gulpjs.com/))
+* Brocolli (#TBD)
+* Brunch (#TBD)
 
 ##Install
 
@@ -34,6 +39,19 @@ grunt go
 
 ## Author
 Andrii Lundiak aka @[landike](https://twitter.com/landike)
+
+
+## To Read
+
+* http://www.slideshare.net/landike/grunt-delicious
+* http://markdalgleish.github.io/presentation-build-wars-gulp-vs-grunt/
+* https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4
+* http://www.walkercoderanger.com/blog/2015/06/state-of-js-build-tools-2015
+ 
+# Inspired 
+
+By Automatization, CLI, shell scripting and Grunt.JS.
+
 
 ## License
 Free
