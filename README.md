@@ -1,12 +1,27 @@
 # JavaScript Build Tools Collection
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+[![Travis](https://img.shields.io/travis/joyent/node.svg)](https://github.com/alundiak/builders)
+[![Jenkins](https://img.shields.io/jenkins/s/https/jenkins.qa.ubuntu.com/precise-desktop-amd64_default.svg)](https://github.com/alundiak/builders)
+[![Coverity Scan](https://img.shields.io/coverity/scan/3997.svg)](https://github.com/alundiak/builders)
+[![Github Releases](https://img.shields.io/github/downloads/atom/atom/latest/total.svg)](https://github.com/alundiak/builders)
+
+[![node](https://img.shields.io/node/v/gh-badges.svg)](https://github.com/alundiak/builders)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/alundiak/builders)
+[![bower](https://img.shields.io/bower/v/bootstrap.svg)](https://github.com/alundiak/builders)
+
+[![David](https://img.shields.io/david/strongloop/express.svg)](https://github.com/alundiak/builders)
+[![David](https://img.shields.io/david/dev/strongloop/express.svg)](https://github.com/alundiak/builders)
+
+
+[![Twitter](https://img.shields.io/twitter/url/https/shields.io.svg)](https://github.com/alundiak/builders)
+
 Collection of well known build tools examples:
 
 * [Grunt.JS](http://gruntjs.com/)
-* [Gulp.JS]((http://gulpjs.com/))
-* Brocolli (#TBD)
-* Brunch (#TBD)
+* [Gulp.JS](http://gulpjs.com/)
+* [Brocolli](https://github.com/broccolijs/broccoli) #TBD
+* [Brunch](http://brunch.io/) #TBD
 
 ##Install
 
