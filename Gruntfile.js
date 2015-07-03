@@ -25,7 +25,16 @@ module.exports = function(grunt) {
         'bower_components/jquery/dist/jquery.js',
         'bower_components/bootstrap/dist/bootstrap.js',
         'bower_components/backbone/backbone.js',
-        'bower_components/angular/angular.js'
+        'bower_components/marionette/lib/backbone.marionette.js',
+        'bower_components/angular/angular.js',
+        'bower_components/ember/ember.js',
+        'bower_components/knockout/dist/knockout.debug.js',
+        'bower_components/lodash/lodash.js',
+        'bower_components/lodash-compat/lodash.js',
+        'bower_components/underscore/underscore.js',
+        'bower_components/moment/moment.js',
+        'bower_components/requirejs/require.js',
+        'bower_components/d3/d3.js'
     ];
 
     var config = {

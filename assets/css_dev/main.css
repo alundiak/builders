@@ -6348,12 +6348,11 @@ td.visible-print {
   aaa: url("../assets");
   bbb: url("/assets");
   ccc: url("assets");
-  aaa4: url('/img/../assets?1417122830');
+  aaa4: url('/img/../assets?1435875462');
   bbb4: url(/assets);
   ccc4: url('/img/assets');
-  color: #282828;
-  backgrounda: url("1.jpg");
+  backgrounda: url("img/1.jpg");
   backgroundb: url("1.jpg");
   backgroundc: url('/img/img/2.jpg');
-  backgroundd: url('/img/img/2.jpg');
+  backgroundd: url('/img/2.jpg?1416658364');
 }

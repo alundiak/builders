@@ -1,14 +1,15 @@
-# Grunt-Delicious
+# JavaScript Builders
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-> Collection of "grunt contrib packages/modules usage examples" to work with on any project or get started during study. 
+> Collection of "grunt contrib packages/modules and gulp and maye other builders usage examples" to work with on any project or get started during study. 
 
 ##Install
+
 ### Node.JS
 If u don't have **Node.JS** install it from [official website](http://nodejs.org).
 
-### Grunt CLI and Bower
-If u don't have **Grunt CLI** and **Bower** node.js packages globally, do it - install them all :)
+### Global CLI instruments/tools
+If u don't have **Grunt CLI**, **Gulp**, **Bower** globally, do it - install them all :)
 ```
 npm install grunt-cli gulp bower -g
 ```
@@ -26,16 +27,10 @@ Clone this source code, and then inside of it hit these 2 commands:
 ```
 npm install && bower install
 ```
-And u ready to go. To get started hit the command
+And u ready to go, yes, really `go`. Get started by hitting the command:
 ```
-grunt DoAll
+grunt go
 ```
-Expected to see many jslint issues :) But it's expected, so it's fine.
-
-## TODO
-http://gruntjs.com/project-scaffolding
-https://github.com/gruntjs/grunt-init
-
 
 ## Author
 Andrii Lundiak aka @[landike](https://twitter.com/landike)

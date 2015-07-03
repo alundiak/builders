@@ -24,7 +24,9 @@
     "underscore": "~1.8.3",
     "d3": "~3.5.5",
     "moment": "~2.10.3",
-    "marionette": "~2.4.2"
+    "marionette": "~2.4.2",
+    "ember": "~1.13.2",
+    "extjs": "~5.1.1-451"
   },
   "devDependencies": {
     "requirejs": "~2.1.18"
