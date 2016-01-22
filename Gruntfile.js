@@ -2,23 +2,14 @@ module.exports = function(grunt) {
     'use strict';
 
     // grunt.loadNpmTasks('grunt-contrib-connect');
-    // grunt.loadNpmTasks('grunt-contrib-watch');
-    // grunt.loadNpmTasks('grunt-contrib-concat');
-    // grunt.loadNpmTasks('grunt-contrib-uglify');
-    // grunt.loadNpmTasks('grunt-contrib-jshint');
-    // grunt.loadNpmTasks('grunt-contrib-less');
-    // grunt.loadNpmTasks('grunt-contrib-cssmin');
-    // grunt.loadNpmTasks('grunt-concurrent');
-    // grunt.loadNpmTasks('grunt-eslint');
-    // grunt.loadNpmTasks('grunt-jsonlint');
-
+    // ....    
+    
+    // or
     // https://www.npmjs.org/package/matchdep
     // require('matchdep').filterDev('*').forEach(grunt.loadNpmTasks);
 
     // or
-
     // https://github.com/sindresorhus/load-grunt-tasks
-    // by Sindre Sorhus (again and again he reworks MANY packages.)
     require('load-grunt-tasks')(grunt);
 
     var allBigBossFiles = [
@@ -891,9 +882,20 @@ module.exports = function(grunt) {
               'docs/README.md': [ 'docs/README.md.tpl']
             }
           }
-        }
+        },
         
         // TODO gh-pages
+
+        'gh-pages':{
+            options: {
+                base: 'gh-gh',
+                // add: true, // If you want the task to add new src files but leave existing ones untouched
+                dotfiles: true,
+                message: 'gh-pages updated'
+                //tag:'2.2.3'
+            },
+            src: '**' // src: '**/*'
+        }
 
     };
 
