@@ -35,13 +35,16 @@ npm install grunt-cli gulp bower -g
 ```
 
 ### Ruby's sass and compass gems (optional)
-- Needed for 'grunt sass' and 'grunt compass' tasks based on Ruby parsing)
+Needed for 'grunt sass' and 'grunt compass' tasks based on Ruby parsing)
 If u r not on Mac OS, Install Ruby from [official website](https://www.ruby-lang.org/en/).
 If u r on Mac OS u may need just to upgrade Ruby and ruby-gems.
 In both cases, u have then to install 2 gems:
 ```
 gem install sass compass scss-lint
 ```
+
+*If you are curious person, have a look to `init.sh` and execute it, u will get the point :)*
+
 ### Project setup
 Clone this source code, and then inside of it hit these 2 commands:
 ```
@@ -62,6 +65,7 @@ Andrii Lundiak aka @[landike](https://twitter.com/landike)
 * http://markdalgleish.github.io/presentation-build-wars-gulp-vs-grunt/
 * https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4
 * http://www.walkercoderanger.com/blog/2015/06/state-of-js-build-tools-2015
+* http://www.smashingmagazine.com/2014/06/11/building-with-gulp/
  
 # Inspired 
 

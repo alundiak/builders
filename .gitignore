@@ -1,6 +1,19 @@
 node_modules/
 bower_components/
-npm-debug.log
+logs
+*.log
+npm-debug.log*
+.tmp/
+.grunt/
+.npm
+pids
+*.pid
+*.seed
+.DS_Store
+._*
+
+
+# Custom, for this repo.
 assets
 dist
 .sass-cache
