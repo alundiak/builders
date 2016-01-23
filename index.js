@@ -9,7 +9,7 @@ var index = fs.readFileSync('index.html');
 // console.log(something)
 // }).listen(2014);
 
-httpServer = http.createServer(function (req, res) {
+var httpServer = http.createServer(function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.end(index);
 }).listen(2014);

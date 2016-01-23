@@ -1,17 +1,6 @@
 module.exports = function(grunt) {
     'use strict';
 
-    // grunt.loadNpmTasks('grunt-contrib-connect');
-    // ....    
-    
-    // or
-    // https://www.npmjs.org/package/matchdep
-    // require('matchdep').filterDev('*').forEach(grunt.loadNpmTasks);
-
-    // or
-    // https://github.com/sindresorhus/load-grunt-tasks
-    require('load-grunt-tasks')(grunt);
-
     var allBigBossFiles = [
         'bower_components/jquery/dist/jquery.js',
         'bower_components/bootstrap/dist/bootstrap.js',
@@ -28,8 +17,116 @@ module.exports = function(grunt) {
         'bower_components/d3/d3.js'
     ];
 
+    //
+    // MAIN CONFIG variable
+    //
     var config = {
         pkg: grunt.file.readJSON('package.json'),
+
+        // Custom task.
+        mapage: {
+            create: {
+                dest: 'dist/mapage.html',
+                templateUrl: 'tasks/mapage.tpl',
+                context: {
+                    content: 'Hello my dear DIV element',
+                    cssClass: 'unbelievable'
+                }
+            }
+        },
+
+        //
+        // SERVERS section
+        //
+
+        // https://github.com/gruntjs/grunt-contrib-connect
+        connect: {
+            server1: {
+                options: {
+                    port: 2014,
+                    keepalive: true,
+                    debug: true,
+                    open: true,
+                    livereload: 3579,
+                    hostname: "*" // Now you can access from 127.0.0.1 and localhost, and 192.168.137.128
+                }
+            },
+            forPlato: {
+                options: {
+                    port: 2015,
+                    base: 'dist/plato_reports/',
+                    keepalive: true,
+                    open: true,
+                    hostname: 'localhost'
+                }
+            },
+            // Based on https://github.com/intesso/connect-livereload
+            server2: {
+                options: {
+                    port: 3000,
+                    keepalive: true,
+                    hostname: 'localhost',
+                    middleware: function(connect) {
+                        return [
+                            require('connect-livereload')(),
+                            // checkForDownload,
+                            // mountFolder(connect, '.tmp'),
+                            // mountFolder(connect, 'app')
+                        ];
+                    }
+                }
+            },
+            /*
+                Critical CSS test server (for grunt-criticalcss and grunt-penthouse tasks).
+                Go, and hit the command 'grunt criticalcss' or grunt penthouse'.
+                Both should give similar results.
+            */
+            forCriticalCss: {
+                options: {
+                    port: 2016,
+                    keepalive: true,
+                    //base: 'dist/criticalcss/',
+                    open: true,
+                    hostname: 'localhost'
+                }
+            },
+        },
+        // + https://www.npmjs.org/package/grunt-reload
+        // But it seems to be outdated.
+
+        // https://github.com/bustardcelly/grunt-forever
+        // https://www.npmjs.org/package/grunt-forever-multi
+        forever: {
+            server1: {
+                options: {
+                    index: 'index.js',
+                    logDir: 'logs'
+                }
+            },
+
+            server2: {
+                options: {
+                    index: 'otherindex.js',
+                    logDir: 'logs'
+                }
+            }
+        },
+
+        // https://github.com/ChrisWren/grunt-nodemon
+        nodemon: {
+            dev: {
+                options: {
+                    ext: 'js,html'
+                        // even so, doesn't watch index.html
+                        // even $ nodemon -e js,html - Doesn't
+                },
+                script: 'index.js'
+            }
+        },
+
+        //
+        // CONCAT, MINIFY/UGLIFY/BEAUTIFY section
+        //
 
         // https://github.com/gruntjs/grunt-contrib-concat
         concat: {
@@ -140,6 +237,10 @@ module.exports = function(grunt) {
             }
         },
 
+        //
+        // LESS, SASS, SCSS, COMPASS section
+        //
+
         // https://github.com/gruntjs/grunt-contrib-less
         less: {
             dev: {
@@ -180,18 +281,37 @@ module.exports = function(grunt) {
                 },
                 files: {
                     // 'destination': 'source'
-                    'dist/css/by_ruby/1/main.css': 'styles/main.scss',
-                    'dist/css/by_ruby/1/test.css': 'styles/test.sass'
+                    'dist/css/by_ruby/1/main.css': 'assets/styles/main.scss',
+                    'dist/css/by_ruby/1/test.css': 'assets/styles/test.sass'
                 }
             },
             dist2: {
                 files: [{
                     expand: true,
-                    cwd: 'styles',
+                    cwd: 'assets/styles',
                     src: ['*.scss', '*.sass'],
                     dest: 'dist/css/by_ruby/2/',
                     ext: '.css'
                 }]
+            }
+        },
+
+        // libsass on C. => https://github.com/hcatlin/libsass
+        // https://github.com/sass/node-sass
+        // https://github.com/sass/node-sass-middleware
+        // See example in the end of file.
+
+        // And now, based on node-sass (libsass) we have grunt plugin:
+        // https://github.com/sindresorhus/grunt-sass
+        sass: {
+            options: {
+                sourceMap: true
+            },
+            dist3: {
+                files: {
+                    'dist/css/by_c/main.css': 'assets/styles/main.scss',
+                    'dist/css/by_c/test.css': 'assets/styles/test.sass'
+                }
             }
         },
 
@@ -205,29 +325,27 @@ module.exports = function(grunt) {
                 sassDir: 'sass',
                 importPath: 'bower_components',
                 noLineComments: true,
-                force: true, // We can owwrite, instead of cleaning.
+                force: true, // We can overwrite, instead of cleaning.
                 // bundleExec: false,
                 // watch: true
 
                 // httpPath    
                 // generatedImagesDir: '.tmp/assets/images/generated',
-                imagesDir: 'img',
+                //relativeAssets: true,
+                imagesDir: 'assets/img',
                 // javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: 'myfonts',
+                fontsDir: 'assets/myfonts',
                 // importPath: '<%= yeoman.app %>/bower_components',
                 // httpImagesPath: '/assets/images',
                 // httpGeneratedImagesPath: '/assets/images/generated',
-                // httpFontsPath: '/assets/fonts',
-                relativeAssets: false
-
-
+                // httpFontsPath: '/assets/fonts'
                 // raw: 'preferred_syntax = :scss\n' // Use `raw` since it's not directly available
             },
             dev: {
                 options: {
                     // basePath: ''
                     // environment: 'development' // by default
-                    cssDir: 'assets/css_dev'  
+                    cssDir: 'dist/compass/css_dev'  
                     // raw: 'preferred_syntax = :scss\n' // Use `raw` since it's not directly available
                 }
             },
@@ -235,34 +353,15 @@ module.exports = function(grunt) {
                 options: {
                     // basePath: ''
                     environment: 'production',
-                    cssDir: 'assets/css_prod',
+                    cssDir: 'dist/compass/css_prod',
                     outputStyle: 'compressed'
-                    
                 }
             }
         },
 
-        // libsass on C. => https://github.com/hcatlin/libsass
-        // https://github.com/sass/node-sass
-        // https://github.com/sass/node-sass-middleware
-        // See example in the end of file.
-
-        // And now, based on node-sass (libsass) we have grunt plugin:
-        // https://github.com/sindresorhus/grunt-sass - again guess by whom created? right by Sindre.
-        sass: {
-            options: {
-                sourceMap: true
-            },
-            dist3: {
-                files: {
-                    'dist/css/by_c/main.css': 'styles/main.scss',
-                    'dist/css/by_c/test.css': 'styles/test.sass'
-                }
-            }
-        },
-
-        // TODO - related to SASS
-        // https://github.com/nDmitry/grunt-autoprefixer
+        //
+        // LINTERs section
+        //
 
         // https://www.npmjs.org/package/grunt-jsonlint    
         jsonlint: {
@@ -281,7 +380,7 @@ module.exports = function(grunt) {
         // JSLINT originnally by Douglas Crockford 
         jslint: {
             target: {
-                src: allBigBossFiles,
+                src: 'bower_components/jquery/dist/jquery.js',
                 // exclude: [
                 //     'some/path/to/config.js'
                 // ],
@@ -314,18 +413,19 @@ module.exports = function(grunt) {
             dev: {
                 // Be aware that jshintrc settings are not merged with your Grunt options.
                 options: {
-                    // jshintrc: '.jshintrc' // || true
-
+                    //jshintrc: '.jshintrc', // || true
                     curly: false,
-                    eqeqeq: false
-                        // immed: false,
-                        // globals: {
-                        //     jQuery: true,
-                        //     $: true,
-                        //     console: true
-                        // }
+                    eqeqeq: false,
+                    eqnull: true,
+                    sub: true
+                    // immed: false,
+                    // globals: {
+                    //     jQuery: true,
+                    //     $: true,
+                    //     console: true
+                    // }
                 },
-                target: {
+                files: {
                     src: ['bower_components/jquery/dist/jquery.js']
                 }
             },
@@ -375,7 +475,7 @@ module.exports = function(grunt) {
         // https://github.com/ahmednuaman/grunt-scss-lint
         scsslint: {
             allFiles: [
-                'styles/*.{scss,sass}',
+                'assets/styles/*.{scss,sass}',
             ],
             options: {
                 // emitError: true,
@@ -390,6 +490,29 @@ module.exports = function(grunt) {
         mdlint: {
             all: ['*.md']
         },
+
+        // https://github.com/jsoverson/grunt-plato
+        plato: {
+            target: {
+                options: {
+                    jshint : grunt.file.readJSON('.jshintrc')
+                    // or ,
+                    // complexity: {
+                    //     logicalor: false,
+                    //     switchcase: false,
+                    //     forin: true,
+                    //     trycatch: true
+                    // }
+                },
+                files: {
+                    'dist/plato_reports': allBigBossFiles
+                }
+            }
+        },
+
+        //
+        // Access to file, read/write. Cleaning logs.
+        //
 
         // https://www.npmjs.org/package/grunt-remove-logging | Last update Sep-2014
         removelogging: {
@@ -443,6 +566,10 @@ module.exports = function(grunt) {
             }
         },
 
+        //
+        // SHELL, ENV, EXEC, PATH, PROMPT section
+        //
+
         // https://github.com/jharding/grunt-exec | based on separate, own task
         // by jharding. Last update: Jul 15, 2014
         exec: {
@@ -465,7 +592,6 @@ module.exports = function(grunt) {
         },
 
         // https://github.com/sindresorhus/grunt-shell | based on chalk
-        // Again by Sindre Sorhus (Last update Sep 1, 2014)
         shell: {
             options: {
                 stderr: false
@@ -517,7 +643,7 @@ module.exports = function(grunt) {
 
             build: {
                 files: [{
-                    'dist/files.json': ['styles/**/*', 'tasks/**/*', 'bower_components/**/*.{js,css}']
+                    'dist/files.json': ['assets/styles/**/*', 'tasks/**/*', 'bower_components/**/*.{js,css}']
                 }]
             }
         },
@@ -569,12 +695,16 @@ module.exports = function(grunt) {
             }
         },
 
+        //
+        // DEPENDENCY MANAGEMENT section
+        //
+
         // https://www.npmjs.org/package/grunt-bower-task
         // Pros: u get rid of many not needed files (as we have in bower_components)
         bower: {
             copySources: {
                 options: {
-                    targetDir: 'dist/lib'
+                    targetDir: 'dist/bower_components_by_bower'
                     // layout: 'byType',
                     // install: true,
                     // verbose: false,
@@ -586,6 +716,10 @@ module.exports = function(grunt) {
         },
         // There is almost the same clone package: https://github.com/curist/grunt-bower | Not tried.
 
+        //
+        // FILES, FODLERS, CLEAN, COPY, SYNC section
+        //
+
         // https://github.com/gruntjs/grunt-contrib-clean    
         clean: {
             target: {
@@ -596,8 +730,10 @@ module.exports = function(grunt) {
         // https://github.com/gruntjs/grunt-contrib-copy    
         copy: {
             main: {
+                flatten: true,
+                expand: true, // good example, how to not use folder name.
                 src: allBigBossFiles,
-                dest: 'dist/copied/',
+                dest: 'dist/bower_components_by_copy/',
             }
         },
 
@@ -627,7 +763,6 @@ module.exports = function(grunt) {
         */
 
         // https://github.com/sindresorhus/grunt-concurrent | Created in Apr-2013
-        // Again by Sindre Sorhus        
         concurrent: {
             target1: ['concat', 'uglify', 'cssmin', 'htmlmin', 'imagemin'],
             target2: {
@@ -681,6 +816,10 @@ module.exports = function(grunt) {
         // https://www.npmjs.org/package/grunt-sails-linker
         // TODO
 
+        //
+        // MARKDOWN, DOCS, TEMPLATE section
+        //
+
         // https://www.npmjs.org/package/grunt-readme
         // DEPRECATED. Please use Verb instead.
 
@@ -688,7 +827,34 @@ module.exports = function(grunt) {
         // https://github.com/assemble/grunt-verb
         // https://www.npmjs.org/package/grunt-verb
         verb: {
-            target: {}
+            readme: {
+                files: [
+                    {src: ['assets/docs/.verb.md'], dest: 'dist/docs/README_by_verb.md'}//,
+                    //{expand: true, cwd: 'assets/docs', src: ['**/*.tmpl.md'], dest: '.', ext: '.md'},
+                ]
+            }
+        },
+
+        // https://github.com/mathiasbynens/grunt-template
+        template: {
+            options: {
+                data: {
+                    componentID: 123,
+                    componentName: 'hello'
+                }
+            },
+            'README.md': {
+                options: {
+                    data: {
+                        // Doesn't work. Here componentID is not visible anymore. 
+                        // Details: https://github.com/mathiasbynens/grunt-template/issues/9 reporeted by me.
+                        componentName: 'no way?'
+                    }
+                },
+                files: {
+                    'dist/docs/README_by_template.md': ['assets/docs/README.md.tpl']
+                }
+            }
         },
 
         // https://github.com/ericmatthys/grunt-changelog
@@ -714,6 +880,61 @@ module.exports = function(grunt) {
                 src: ['dist/file_minified.js', 'dist/bootstrap.css']
             }
         },
+        
+        //
+        // CRITICAL CSS section
+        //
+
+        // https://github.com/bezoerb/grunt-critical
+        // uses/requires https://github.com/addyosmani/critical
+        critical: {
+            test: {
+                options: {
+                    base: './',
+                    css: [
+                        'assets/critical_site/main.css',
+                        'dist/bootstrap.css'
+                    ],
+                    width: 320,
+                    height: 70
+                },
+                src: 'assets/critical_site/index.html',
+                dest: 'dist/criticalcss/generated_by_critical.css'
+            }
+        },
+    
+        // https://github.com/filamentgroup/grunt-criticalcss
+        criticalcss: {
+            custom: {
+                options: {
+                    url: "http://localhost:2016", // Server should run !!! to work
+                    width: 1200,
+                    height: 900,
+                    outputfile: "dist/criticalcss/generated_by_critical_css.css",
+                    filename: "dist/bootstrap.css",
+                    buffer: 800*1024,
+                    ignoreConsole: false
+                }
+            }
+        },
+
+        // https://github.com/fatso83/grunt-penthouse
+        // "grunt-penthouse"requires also "penthouse" module.
+        // https://github.com/pocketjoso/penthouse
+        penthouse: {
+            extract: {
+                outfile: 'dist/criticalcss/generated_by_penthouse.css',
+                css: 'dist/bootstrap.css',
+                url: 'http://localhost:2016',
+                width: 1300,
+                height: 900,
+                skipErrors: false // this is the default
+            },
+        },
+
+        //
+        // GIT related section
+        //
 
         // https://github.com/vojtajina/grunt-bump
         bump: {
@@ -733,162 +954,10 @@ module.exports = function(grunt) {
             }
         },
 
-        // https://github.com/gruntjs/grunt-contrib-connect
-        connect: {
-            server1: {
-                options: {
-                    port: 2014,
-                    // keepalive: true,
-                    debug: true,
-                    open: true,
-                    livereload: 3579,
-                    hostname: "*" // Now you can access from 127.0.0.1 and localhost, and 192.168.137.128
-                }
-            },
-            forPlato: {
-                options: {
-                    port: 2015,
-                    keepalive: true,
-                    base: 'dist/plato_reports/',
-                    open: true,
-                    hostname: 'localhost'
-                }
-            },
-            // Based on https://github.com/intesso/connect-livereload
-            server2: {
-                options: {
-                    port: 3000,
-                    keepalive: true,
-                    hostname: 'localhost',
-                    middleware: function(connect) {
-                        return [
-                            require('connect-livereload')(),
-                            // checkForDownload,
-                            // mountFolder(connect, '.tmp'),
-                            // mountFolder(connect, 'app')
-                        ];
-                    }
-                }
-            }
-        },
-        // + https://www.npmjs.org/package/grunt-reload
-        // But it seems to be outdated.
-
-        // https://github.com/bustardcelly/grunt-forever
-        // https://www.npmjs.org/package/grunt-forever-multi
-        forever: {
-            server1: {
-                options: {
-                    index: 'index.js',
-                    logDir: 'logs'
-                }
-            },
-
-            server2: {
-                options: {
-                    index: 'otherindex.js',
-                    logDir: 'logs'
-                }
-            }
-        },
-
-        // https://github.com/ChrisWren/grunt-nodemon
-        nodemon: {
-            dev: {
-                options: {
-                    ext: 'js,html'
-                        // even so, doesn't watch index.html
-                        // even $ nodemon -e js,html - Doesn't
-                },
-                script: 'index.js'
-            }
-        },
-
-        // https://github.com/jsoverson/grunt-plato
-        plato: {
-            target: {
-                options: {
-                    jshint : grunt.file.readJSON('.jshintrc')
-                    // or ,
-                    // complexity: {
-                    //     logicalor: false,
-                    //     switchcase: false,
-                    //     forin: true,
-                    //     trycatch: true
-                    // }
-                },
-                files: {
-                    'dist/plato_reports': allBigBossFiles
-                }
-            }
-        },
-
-        /* Phantom.JS, Jasmine, Mocha, Karma, Protractor
-
-        https://github.com/gruntjs/grunt-contrib-qunit
-        https://github.com/gruntjs/grunt-contrib-jasmine
-        https://www.npmjs.org/package/grunt-jasmine-runner
-        
-        https://github.com/karma-runner/grunt-karma
-
-        https://github.com/kmiyashiro/grunt-mocha
-        
-        https://github.com/angular/protractor
-        https://www.npmjs.org/package/grunt-protractor-runner
-        // Isseue: When u have protractor instaleld, grunt-protractor-runner will be installed differently
-        */
-
-        mapage: {
-            create: {
-                dest: 'dist/mapage.html',
-                templateUrl: 'tasks/mapage.tpl',
-                context: {
-                    content: 'Hello my dear DIV element',
-                    cssClass: 'unbelievable'
-                }
-            }
-        },
-        
-        // https://github.com/filamentgroup/grunt-criticalcss
-        criticalcss: {
-            custom: {
-                options: {
-                    url: "http://localhost:2015", // Server should run !!! to work
-                    width: 1200,
-                    height: 900,
-                    outputfile: "dist/critical.css",
-                    filename: "dist/bootstrap.css",
-                    buffer: 800*1024,
-                    ignoreConsole: false
-                }
-            }
-        },
-
-        template: {
-          options: {
-            data: {
-              componentID: 123,
-              componentName: 'hello'
-            }
-          },
-          'README.md' : {
-            options:{
-                data:{
-                    // Doesn't work. Here componentID is not visible anymore.
-                    componentName: 'no way?'       
-                }
-            },
-            files: {
-              'docs/README.md': [ 'docs/README.md.tpl']
-            }
-          }
-        },
-        
-        // TODO gh-pages
-
+        // https://github.com/tschaub/gh-pages
         'gh-pages':{
             options: {
-                base: 'gh-gh',
+                base: 'assets/gh-gh',
                 // add: true, // If you want the task to add new src files but leave existing ones untouched
                 dotfiles: true,
                 message: 'gh-pages updated'
@@ -900,13 +969,34 @@ module.exports = function(grunt) {
 
     };
 
+    //
+    // INIT PHASE
+    //
     grunt.initConfig(config);
+    
+    //
+    // LOAD packages PHASE
+    //
 
-    //load a custom task
+    // grunt.loadNpmTasks('grunt-contrib-connect');
+    // ....    
+    
+    // or
+    // https://www.npmjs.org/package/matchdep
+    // require('matchdep').filterDev('*').forEach(grunt.loadNpmTasks);
+
+    // or
+    // https://github.com/sindresorhus/load-grunt-tasks
+    require('load-grunt-tasks')(grunt);
+
+    //
+    // LOAD a custom task
+    //
     grunt.loadTasks("tasks");
 
-    grunt.registerTask("default", []);
-
+    //
+    // REGISTER custom tasks
+    //
     grunt.registerTask("devMode", [
         'env:dev', 'exec:forEnv'
     ]);
@@ -919,6 +1009,10 @@ module.exports = function(grunt) {
         'plato', 'connect:forPlato'
     ]);
 
+    grunt.registerTask("gimmeCriticalCss", [
+        'connect:forCriticalCss', 'criticalcss'
+    ]);
+
     grunt.registerTask("Because", [
         "concat",
         "uglify", "less",
@@ -928,7 +1022,7 @@ module.exports = function(grunt) {
         "devMode", "prodMode",
         "bower", "path",
         "copy",
-        "mapage:create", // ONLY WITH SUFFIX :create. Otherwise tusk has issue. #TBD.
+        "mapage:create", // ONLY WITH SUFFIX :create. Otherwise task has issue. #TBD (Jan-23-2016 - changed a bit, but not yet real multitask).
         "plato" // First time it will show warnings, because no JSON files, but it creates in fact, so 2nd run will ahve success.
 
     ]);
@@ -942,6 +1036,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask("go", ["connect:server1", "watch:livereload"]);
 
+    grunt.registerTask("default", ["DoAll"]);
+
     // https://github.com/arturadib/shelljs
     // var shell = require('shelljs');
     // shell.echo('JavaScript says Hello to Shell');
@@ -949,7 +1045,7 @@ module.exports = function(grunt) {
 
     // var sass = require('node-sass');
     // sass.renderFile({
-    //     file: 'styles/main.scss',
+    //     file: 'assets/styles/main.scss',
     //     outFile: 'dist/css/main.css',
     //     sourceMap: true,
     //     success: function() {

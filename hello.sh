@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Hello Javascript, it's Bash telling you hello :)"
+echo "Hello JavaScript, it's Bash telling you hello :)"

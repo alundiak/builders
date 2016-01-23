@@ -25,9 +25,11 @@ npm install -g shelljs
 # If u have many markdown files, and would like to lint them from any places.
 npm install -g mdlint
 
-# Great for shecking and updating (-u) local packages/components.
-npm install -g npm-check-updates
-npm install -g bower-check-updates
+# Great for checking and updating (-u) local node_modules and bower_components.
+npm install -g npm-check-updates bower-check-updates
+
+# Indeed awesome usage of above modules. It will fetch updates, and update json files.
+ncu -u && bcu -u
 
 
 #

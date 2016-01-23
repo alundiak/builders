@@ -5,13 +5,12 @@ module.exports = function (grunt) {
 
 	// parameter target is a configuration object from Gruntfile.js: mapage.dev in our case
 	grunt.registerTask("mapage", "generates a page html file for us lazy :)", function (target) {
-		console.log("We should have target here: "+ target);
 
 		// define needed variables
 		var context, source, targetConfig, template;
 
 		// we may need to use target.
-		target = target || 'dist';
+		target = target || 'create';
 
 		this.requiresConfig('mapage.'+target); 
 		
@@ -22,6 +21,6 @@ module.exports = function (grunt) {
 		grunt.file.write(targetConfig.dest, _.template(template, context));
 		grunt.log.writeln('HTML written to ' + targetConfig.dest);
 
-		// fuck, Grunt.JS is really nice tool :)
+		//Grunt.JS is really nice tool :)
 	});
 };

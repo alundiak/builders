@@ -14,6 +14,5 @@ pids
 
 
 # Custom, for this repo.
-assets
 dist
 .sass-cache

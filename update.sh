@@ -24,3 +24,7 @@ done
 
 
 #bower update
+
+# ha-ha, No I have "node-check-updates" aka "ncu" and "bower-check-updates" aka "bcu", so command will be more elegant now:
+ncu -u && bcu -u
+# "-u" tells to update package.json and bower.json

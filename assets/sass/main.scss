@@ -1,0 +1,32 @@
+// More about SASS/SCSS xyz-url() functions http://compass-style.org/reference/compass/helpers/urls/
+@import'config';
+
+@import'font';
+
+// custom font
+@font-face {
+  font-family: 'Open Sans 2';
+  // src: local("Open Sans Light 2"), local("OpenSans-Light-2"), url('open-sans-light.woff') format("woff"); // no warnings
+  src: local("Open Sans Light 2"), local("OpenSans-Light-2"), font-url('open-sans-light.woff') format("woff"); // warnings, when path not exists.
+}
+
+//@function url($path) {
+//	$return : if(str-index($path,'/assets') != null, $path,unquote("url(../assets#{str_slice($path,3)})"));
+//	@return $return;
+//}
+
+.first-using-url { // No matter if path is correct, no compass warnings
+    background-image: url('../assets');
+    background-image: url('/assets');
+    background-image: url('assets');
+    background-image: url('img/1.jpg');
+    background-image: url('1.jpg');
+}
+
+.second-using-image-url { // All urls will go related to imagesPath setting
+    //background-image: image-url('../assets'); // WARNING: 'assets' was not found (or cannot be read) in /Users/alund/prj/builders/img
+    //background-image: image-url('/assets'); // No warnings
+    //background-image: image-url('assets'); // WARNING: 'assets' was not found (or cannot be read) in /Users/alund/prj/builders/img
+    //background-image: image-url('img/2.jpg');
+    background-image: image-url('2.jpg');
+}

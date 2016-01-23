@@ -1,5 +1,24 @@
+// TODO - related to SASS
+https://github.com/nDmitry/grunt-autoprefixer
+
 http://gruntjs.com/project-scaffolding
 https://github.com/gruntjs/grunt-init
 
 looks similar to critical css
+https://github.com/filamentgroup/grunt-criticalcss
 https://github.com/purifycss/purifycss
+https://github.com/fatso83/grunt-penthouse
+https://github.com/addyosmani/critical
+https://github.com/bezoerb/grunt-critical
+
+
+/* Phantom.JS, Jasmine, Mocha, Karma, Protractor
+https://github.com/gruntjs/grunt-contrib-qunit
+https://github.com/gruntjs/grunt-contrib-jasmine
+https://www.npmjs.org/package/grunt-jasmine-runner
+https://github.com/karma-runner/grunt-karma
+https://github.com/kmiyashiro/grunt-mocha
+https://github.com/angular/protractor
+https://www.npmjs.org/package/grunt-protractor-runner
+// Issue: When u have protractor instaleld, grunt-protractor-runner will be installed differently
+*/
