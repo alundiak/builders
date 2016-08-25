@@ -50,10 +50,23 @@ Clone this source code, and then inside of it hit these 2 commands:
 ```
 npm install && bower install
 ```
-And u ready to go, yes, really `go`. Get started by hitting the command:
+
+And u ready to go, yes, really `go`. Get started by running server:
 ```
 grunt go
 ```
+
+Grunt tasks executed one by one, if you hit
+```
+grunt DoAll
+```
+
+To test Critical/Penthouse stuff:
+```
+$1: grunt connect:forCriticalCss
+$2: grunt criticalcss or grunt penthouse
+```
+
 
 ## Author
 Andrii Lundiak aka @[landike](https://twitter.com/landike)

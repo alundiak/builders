@@ -636,7 +636,7 @@ module.exports = function(grunt) {
                 }
             },
             prod: {
-                src: 'prod.json'
+                src: 'config/prod.json'
             }
         },
 
@@ -664,10 +664,10 @@ module.exports = function(grunt) {
         },
 
         // https://github.com/chuckmo/grunt-ssh
-        secret: grunt.file.readJSON('secret.json'),
+        secret: grunt.file.readJSON('config/secret.json'),
         // or
         sshconfig: {
-            "myConfig": grunt.file.readJSON('secret.json')
+            "myConfig": grunt.file.readJSON('config/secret.json')
         },
         sshexec: {
             test1: {
@@ -904,7 +904,7 @@ module.exports = function(grunt) {
         // https://github.com/bezoerb/grunt-critical
         // uses/requires https://github.com/addyosmani/critical
         critical: {
-            test: {
+            target: {
                 options: {
                     base: './',
                     css: [
@@ -915,19 +915,19 @@ module.exports = function(grunt) {
                     height: 70
                 },
                 src: 'assets/critical_site/index.html',
-                dest: 'dist/criticalcss/generated_by_critical.css'
+                dest: 'dist/css/by_critical/generated.css'
             }
         },
     
         // https://github.com/filamentgroup/grunt-criticalcss
         criticalcss: {
-            custom: {
+            target: {
                 options: {
                     url: "http://localhost:2016", // Server should run !!! to work
                     width: 1200,
                     height: 900,
-                    outputfile: "dist/criticalcss/generated_by_critical_css.css",
-                    filename: "dist/bootstrap.css",
+                    outputfile: "dist/css/by_criticalcss/generated.css",
+                    filename: "dist/css/by_less/bootstrap.css",
                     buffer: 800*1024,
                     ignoreConsole: false
                 }
@@ -938,10 +938,10 @@ module.exports = function(grunt) {
         // "grunt-penthouse"requires also "penthouse" module.
         // https://github.com/pocketjoso/penthouse
         penthouse: {
-            extract: {
-                outfile: 'dist/criticalcss/generated_by_penthouse.css',
-                css: 'dist/bootstrap.css',
-                url: 'http://localhost:9000',
+            target: {
+                outfile: 'dist/css/by_penthouse/generated.css',
+                css: 'dist/css/by_less/bootstrap.css',
+                url: 'http://localhost:2016',
                 width: 1300,
                 height: 900,
                 skipErrors: false // this is the default
@@ -1014,6 +1014,8 @@ module.exports = function(grunt) {
     //
     // REGISTER custom tasks
     //
+    grunt.registerTask("go", ["connect:server1", "watch:livereload"]);
+
     grunt.registerTask("devMode", [
         'env:dev', 'exec:forEnv'
     ]);
@@ -1024,10 +1026,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask("gimmePlato", [
         'plato', 'connect:forPlato'
-    ]);
-
-    grunt.registerTask("gimmeCriticalCss", [
-        'connect:forCriticalCss', 'criticalcss', 'penthouse'
     ]);
 
     grunt.registerTask("Because", [
@@ -1042,18 +1040,16 @@ module.exports = function(grunt) {
         "copy",
         "mapage:create", // ONLY WITH SUFFIX :create. Otherwise task has issue. #TBD (Jan-23-2016 - changed a bit, but not yet real multitask).
         "plato" // First time it will show warnings, because no JSON files, but it creates in fact, so 2nd run will ahve success.
-
+        // After this command, we may try other gimme-like commands
     ]);
 
     grunt.registerTask("IAmLazy", [
-        "jsonlint", "jslint:dev", "jshint:dev",
-        /*"csslint","lesslint", "eslint",*/ "mdlint"
+        "jsonlint", "jslint:dev", "jshint:dev", "eslint",
+        "csslint",/*"lesslint", "scsslint",*/
+        // "mdlint" // DOESN"T WORK (Aug-25-2016)
     ]);
 
     grunt.registerTask("DoAll", ["Because", "IAmLazy"]);
-
-    grunt.registerTask("go", ["connect:server1", "watch:livereload"]);
-
     grunt.registerTask("default", ["DoAll"]);
 
     // https://github.com/arturadib/shelljs

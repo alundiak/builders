@@ -40,6 +40,9 @@ npm install -g yo
 npm install -g node-cli-google 
 # buggy (Aug-25-2016) => https://github.com/hwclass/node-cli-google/issues/17 + https://nodejs.org/api/util.html#util_util_format_format
 
+# Handy tool to test web page performance
+npm install -g webpagetest
+
 # Indeed awesome usage of above modules. It will fetch updates, and update json files.
 ncu -u && bcu -u
 
