@@ -1,5 +1,6 @@
 node_modules/
 bower_components/
+crom_modules/
 logs
 *.log
 npm-debug.log*

@@ -925,11 +925,11 @@ module.exports = function(grunt) {
             extract: {
                 outfile: 'dist/criticalcss/generated_by_penthouse.css',
                 css: 'dist/bootstrap.css',
-                url: 'http://localhost:2016',
+                url: 'http://localhost:9000',
                 width: 1300,
                 height: 900,
                 skipErrors: false // this is the default
-            },
+            }
         },
 
         //
@@ -978,8 +978,9 @@ module.exports = function(grunt) {
     // LOAD packages PHASE
     //
 
+    // Simple, native approach:
     // grunt.loadNpmTasks('grunt-contrib-connect');
-    // ....    
+    // ...
     
     // or
     // https://www.npmjs.org/package/matchdep
@@ -1010,7 +1011,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("gimmeCriticalCss", [
-        'connect:forCriticalCss', 'criticalcss'
+        'connect:forCriticalCss', 'criticalcss', 'penthouse'
     ]);
 
     grunt.registerTask("Because", [

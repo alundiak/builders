@@ -1,3 +1,6 @@
+https://github.com/npm/read-package-json
+https://github.com/indexzero/node-pkginfo
+
 // TODO - related to SASS
 https://github.com/nDmitry/grunt-autoprefixer
 
@@ -22,3 +25,5 @@ https://github.com/angular/protractor
 https://www.npmjs.org/package/grunt-protractor-runner
 // Issue: When u have protractor instaleld, grunt-protractor-runner will be installed differently
 */
+
+Extract related configs into ssparate Objects/Files
