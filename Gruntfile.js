@@ -68,7 +68,7 @@ module.exports = function(grunt) {
                     hostname: 'localhost',
                     middleware: function(connect) {
                         return [
-                            require('connect-livereload')(),
+                            require('connect-livereload')()
                             // checkForDownload,
                             // mountFolder(connect, '.tmp'),
                             // mountFolder(connect, 'app')
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
                     open: true,
                     hostname: 'localhost'
                 }
-            },
+            }
         },
         // + https://www.npmjs.org/package/grunt-reload
         // But it seems to be outdated.
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'dist/file_concated.js': allBigBossFiles
+                    'dist/js/by_concat/file_concated.js': allBigBossFiles
                 }
             }
         },
@@ -158,7 +158,7 @@ module.exports = function(grunt) {
                     compress: true
                 },
                 files: {
-                    'dist/file_minified.js': allBigBossFiles
+                    'dist/js/by_uglify/file_minified.js': allBigBossFiles
                 }
             },
             beautifyMe: {
@@ -173,28 +173,25 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'dist/file_beautified.js': allBigBossFiles
+                    'dist/js/by_uglify/file_beautified.js': allBigBossFiles
                 }
             }
         },
 
         // https://github.com/gruntjs/grunt-contrib-cssmin    
         cssmin: {
-            target: {
+            target1: {
                 options: {
                     banner: "/* My minified CSS */\n"
                 },
                 files: {
-                    'dist/bootstrap_but_minified.css': ['dist/bootstrap.css']
+                    'dist/css/by_cssmin/bootstrap_but_minified.css': ['dist/css/by_less/bootstrap.css']
                 }
             },
-            co: {
-                options: {
-                
-                },
+            target2: { // depends on grunt compass
                 files: {
-                    'assets/css_dev/main.min.css': ['assets/css_dev/main.css'],
-                    'assets/css_prod/main.min.css': ['assets/css_prod/main.css']
+                    'dist/css/by_cssmin/css_dev/main.min.css': ['dist/css/by_compass/css_dev/main.css'],
+                    'dist/css/by_cssmin/css_prod/main.min.css': ['dist/css/by_compass/css_prod/main.css']
                 }
             }
 
@@ -256,7 +253,7 @@ module.exports = function(grunt) {
 
                 // or this simple:    
                 files: {
-                    "dist/bootstrap.css": "bower_components/bootstrap/less/bootstrap.less"
+                    "dist/css/by_less/bootstrap.css": "bower_components/bootstrap/less/bootstrap.less"
                 }
 
             },
@@ -266,7 +263,7 @@ module.exports = function(grunt) {
                     compress: true
                 },
                 files: {
-                    "dist/bootstrap.min.css": "bower_components/bootstrap/less/bootstrap.less"
+                    "dist/css/by_less/bootstrap.min.css": "bower_components/bootstrap/less/bootstrap.less"
                 }
             }
         },
@@ -309,8 +306,8 @@ module.exports = function(grunt) {
             },
             dist3: {
                 files: {
-                    'dist/css/by_c/main.css': 'assets/styles/main.scss',
-                    'dist/css/by_c/test.css': 'assets/styles/test.sass'
+                    'dist/css/by_libsass/main.css': 'assets/styles/main.scss',
+                    'dist/css/by_libsass/test.css': 'assets/styles/test.sass'
                 }
             }
         },
@@ -322,7 +319,7 @@ module.exports = function(grunt) {
         // requires "gem install compass" => v1.0.1
         compass: {
             options: {
-                sassDir: 'sass',
+                sassDir: 'assets/sass',
                 importPath: 'bower_components',
                 noLineComments: true,
                 force: true, // We can overwrite, instead of cleaning.
@@ -334,7 +331,7 @@ module.exports = function(grunt) {
                 //relativeAssets: true,
                 imagesDir: 'assets/img',
                 // javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: 'assets/myfonts',
+                fontsDir: 'assets/myfonts'
                 // importPath: '<%= yeoman.app %>/bower_components',
                 // httpImagesPath: '/assets/images',
                 // httpGeneratedImagesPath: '/assets/images/generated',
@@ -345,7 +342,7 @@ module.exports = function(grunt) {
                 options: {
                     // basePath: ''
                     // environment: 'development' // by default
-                    cssDir: 'dist/compass/css_dev'  
+                    cssDir: 'dist/css/by_compass/css_dev'
                     // raw: 'preferred_syntax = :scss\n' // Use `raw` since it's not directly available
                 }
             },
@@ -353,7 +350,7 @@ module.exports = function(grunt) {
                 options: {
                     // basePath: ''
                     environment: 'production',
-                    cssDir: 'dist/compass/css_prod',
+                    cssDir: 'dist/css/by_compass/css_prod',
                     outputStyle: 'compressed'
                 }
             }
@@ -379,13 +376,13 @@ module.exports = function(grunt) {
         // JSLINT is a JavaScript program that looks for problems in JavaScript programs. It is a code quality tool.
         // JSLINT originnally by Douglas Crockford 
         jslint: {
-            target: {
-                src: 'bower_components/jquery/dist/jquery.js',
+            dev: {
+                src: 'assets/for_inject/workflow.js',
                 // exclude: [
                 //     'some/path/to/config.js'
                 // ],
                 options: {
-                    junit: 'dist/jslint/server-junit.xml', // VERY handy thing for CI server like Jenkinse.
+                    junit: 'dist/jslint/server-junit.xml', // VERY handy thing for CI server like Jenkins.
                     errorsOnly: true, 
                     log: 'dist/jslint/server-lint.log',
                     failOnError: false // For this project only !!!
@@ -397,10 +394,28 @@ module.exports = function(grunt) {
                     todo: true,
                     unparam: true,
                     predef: [
-                        '$',
-                        '_',
+                        '$', 'console',
+                        '_', 'exports', 'define',
                         'Handlebars',
-                        'Backbone',
+                        'Backbone'
+                    ]
+                }
+            },
+            me: {
+                files: {
+                    src: ['Gruntfile.js']
+                },
+                directives: {
+                    node: false,
+                    browser: true,
+                    nomen: true,
+                    todo: true,
+                    unparam: true,
+                    predef: [
+                        '$', 'module', 'console',
+                        '_', 'exports', 'define',
+                        'Handlebars',
+                        'Backbone'
                     ]
                 }
             }
@@ -426,7 +441,7 @@ module.exports = function(grunt) {
                     // }
                 },
                 files: {
-                    src: ['bower_components/jquery/dist/jquery.js']
+                    src: ['assets/for_inject/workflow.js']
                 }
             },
             me: {
@@ -440,7 +455,7 @@ module.exports = function(grunt) {
         // grunt-eslint by @sindresorhus => https://www.npmjs.org/package/grunt-eslint
         eslint: {
             options: {
-                config: 'eslint.json',
+                config: 'eslint.json'
                 // rulesdir: ['./rules']
             },
             target: ['bower_components/jquery/dist/jquery.js']
@@ -475,7 +490,7 @@ module.exports = function(grunt) {
         // https://github.com/ahmednuaman/grunt-scss-lint
         scsslint: {
             allFiles: [
-                'assets/styles/*.{scss,sass}',
+                'assets/styles/*.{scss,sass}'
             ],
             options: {
                 // emitError: true,
@@ -483,7 +498,7 @@ module.exports = function(grunt) {
                 config: '.scss-lint.yml', // Info about linters/rules: https://github.com/causes/scss-lint#linters
                 // reporterOutput: 'scss-lint-report.xml', // for Jenkinse
                 colorizeOutput: true
-            },
+            }
         },
 
         // https://github.com/ChrisWren/grunt-mdlint
@@ -521,15 +536,15 @@ module.exports = function(grunt) {
                     // replaceWith: "// !!! PLEASE DO NOT LEAVE console.log()-s; !!!",
                     namespace: ['console', 'window.console']
                 },
-                src: 'index.js',
-                dest: 'index_a.js'
+                src: 'assets/for_inject/index.js',
+                dest: 'dist/by_removelogging/index.js'
             }
         },
         // You can tell this task to keep specific logging statements 
         // by adding the comment directive /*RemoveLogging:skip*/ after the statement:
 
         // https://github.com/jsoverson/grunt-strip | Last update in 2013 (Looks not maintained package)
-        // And by default buggy - instead of console.log() it leavse 0. Expected nothing "".
+        // And by default buggy - instead of console.log() it leaves 0. Expected nothing "".
         strip: {
             main: {
                 options : {
@@ -537,8 +552,8 @@ module.exports = function(grunt) {
                     // replaceWith: "", // borrowed from removelogging, but doesn't work here.
                     nodes : ['console.log', 'debug', 'debugger']
                 },
-                src: 'index.js',
-                dest: 'index_b.js'
+                src: 'assets/for_inject/index.js',
+                dest: 'dist/by_strip/index.js'
             }
         },
 
@@ -686,7 +701,7 @@ module.exports = function(grunt) {
                         type: 'list', // list, checkbox, confirm, input, password
                         message: 'Please enter your score for presentation?', // Question to ask the user, function needs to return a string,
                         default: 'A', // default value if nothing is entered
-                        choices: ['A', 'B', 'C', 'D'],
+                        choices: ['A', 'B', 'C', 'D']
                         // validate: 'function(value)',
                         // filter: function(value),
                         // when: function(answers)
@@ -704,7 +719,7 @@ module.exports = function(grunt) {
         bower: {
             copySources: {
                 options: {
-                    targetDir: 'dist/bower_components_by_bower'
+                    targetDir: 'dist/js/by_bower/bower_components'
                     // layout: 'byType',
                     // install: true,
                     // verbose: false,
@@ -733,7 +748,7 @@ module.exports = function(grunt) {
                 flatten: true,
                 expand: true, // good example, how to not use folder name.
                 src: allBigBossFiles,
-                dest: 'dist/bower_components_by_copy/',
+                dest: 'dist/js/by_copy/bower_components/'
             }
         },
 
@@ -743,10 +758,10 @@ module.exports = function(grunt) {
                 files: [{
                     // cwd: 'src',
                     src: allBigBossFiles,
-                    dest: 'dist/tomcat/webapps',
+                    dest: 'dist/tomcat/webapps'
                 }],
                 options: {
-                    spawn: true,
+                    spawn: true
                 },
                 pretend: false, // true will reject ANY IO. Before you run the task with `updateAndDelete` PLEASE MAKE SURE it doesn't remove too much.
                 verbose: true // Display log messages when copying files
@@ -769,7 +784,7 @@ module.exports = function(grunt) {
                 options: {
                     logConcurrentOutput: true
                 },
-                tasks: ['csslint', 'lesslint', 'jsonlint', 'jslint', 'jshint', 'mdlint']
+                tasks: ['csslint', 'lesslint', 'jsonlint', 'jslint:dev', 'jshint:dev', 'mdlint']
             }
         },
         // There is grunt-contrib-parallel implemented sonner than concurrent
@@ -796,18 +811,19 @@ module.exports = function(grunt) {
         // https://github.com/ChrisWren/grunt-inject
         inject: {
             single: {
-                scriptSrc: 'workflow.js',
+                scriptSrc: 'assets/for_inject/workflow.js',
                 files: {
-                    'index2.html': 'index.html'
+                    'dist/by_inject/index_single.html': 'assets/for_inject/index.html'
                 }
             },
             multiple: {
-                scriptSrc: ['dist/lib/**/*.js'],
+                scriptSrc: ['assets/for_inject/workflow.js', 'assets/for_inject/index.js'],
                 files: [{
                     expand: true,
-                    // cwd: 'src',
-                    src: ['index.html'],
-                    dest: 'dist'
+                    flatten: true, // get rid of not necessary folders
+                    // cwd: 'src', // doesn't work for me
+                    src: ['assets/for_inject/index.html', 'assets/for_inject/index2.html'],
+                    dest: 'dist/by_inject_multiple'
                 }]
             }
         },
@@ -1015,10 +1031,11 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("Because", [
+        "inject", "removelogging", "strip",
         "concat",
         "uglify", "less",
-        "cssmin",
         "sass", "compass",
+        "cssmin",
         "exec", "shell",
         "devMode", "prodMode",
         "bower", "path",
@@ -1029,7 +1046,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("IAmLazy", [
-        "jsonlint", "jslint", "jshint",
+        "jsonlint", "jslint:dev", "jshint:dev",
         /*"csslint","lesslint", "eslint",*/ "mdlint"
     ]);
 
