@@ -23,10 +23,14 @@ Collection of well known build tools examples:
 * [Brocolli](https://github.com/broccolijs/broccoli) #TBD
 * [Brunch](http://brunch.io/) #TBD
 
-##Install
+## Install
 
 ### Node.JS
 If u don't have **Node.JS** install it from [official website](http://nodejs.org).
+
+*If you are curious person, have a look to `init.sh` and execute it, u will get the point :)*
+
+Otherwise, install step by step.
 
 ### Global CLI instruments/tools
 If u don't have **Grunt CLI**, **Gulp**, **Bower** globally, do it - install them all :)
@@ -42,8 +46,6 @@ In both cases, u have then to install 2 gems:
 ```
 gem install sass compass scss-lint
 ```
-
-*If you are curious person, have a look to `init.sh` and execute it, u will get the point :)*
 
 ### Project setup
 Clone this source code, and then inside of it hit these 2 commands:
