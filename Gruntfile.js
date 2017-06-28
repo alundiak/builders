@@ -455,10 +455,10 @@ module.exports = function(grunt) {
         // grunt-eslint by @sindresorhus => https://www.npmjs.org/package/grunt-eslint
         eslint: {
             options: {
-                config: 'eslint.json'
+                // config: '.eslintrc'
                 // rulesdir: ['./rules']
             },
-            target: ['bower_components/jquery/dist/jquery.js']
+            target: ['tasks/mapage.js']
         },
         // But there is another clone:
         // eslint-grunt by @iancmyers => https://www.npmjs.org/package/eslint-grunt

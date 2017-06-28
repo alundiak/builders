@@ -4,10 +4,10 @@ module.exports = function (grunt) {
 	var _ = grunt.util._; // lodash
 
 	// parameter target is a configuration object from Gruntfile.js: mapage.dev in our case
-	grunt.registerTask("mapage", "generates a page html file for us lazy :)", function (target) {
+	grunt.registerTask('mapage', 'generates a page html file for us lazy :)', function (target) {
 
 		// define needed variables
-		var context, source, targetConfig, template;
+		var context, targetConfig, template;
 
 		// we may need to use target.
 		target = target || 'create';
