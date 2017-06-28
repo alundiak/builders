@@ -332,6 +332,7 @@ module.exports = function(grunt) {
                 imagesDir: 'assets/img',
                 // javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: 'assets/myfonts'
+
                 // importPath: '<%= yeoman.app %>/bower_components',
                 // httpImagesPath: '/assets/images',
                 // httpGeneratedImagesPath: '/assets/images/generated',
@@ -343,7 +344,7 @@ module.exports = function(grunt) {
                     // basePath: ''
                     // environment: 'development' // by default
                     cssDir: 'dist/css/by_compass/css_dev'
-                    // raw: 'preferred_syntax = :scss\n' // Use `raw` since it's not directly available
+                        // raw: 'preferred_syntax = :scss\n' // Use `raw` since it's not directly available
                 }
             },
             prod: {
@@ -433,6 +434,7 @@ module.exports = function(grunt) {
                     eqeqeq: false,
                     eqnull: true,
                     sub: true
+
                     // immed: false,
                     // globals: {
                     //     jQuery: true,
@@ -510,7 +512,8 @@ module.exports = function(grunt) {
         plato: {
             target: {
                 options: {
-                    jshint : grunt.file.readJSON('.jshintrc')
+                    jshint: grunt.file.readJSON('.jshintrc')
+
                     // or ,
                     // complexity: {
                     //     logicalor: false,
@@ -532,7 +535,7 @@ module.exports = function(grunt) {
         // https://www.npmjs.org/package/grunt-remove-logging | Last update Sep-2014
         removelogging: {
             dist: {
-                options:{
+                options: {
                     // replaceWith: "// !!! PLEASE DO NOT LEAVE console.log()-s; !!!",
                     namespace: ['console', 'window.console']
                 },
@@ -547,10 +550,10 @@ module.exports = function(grunt) {
         // And by default buggy - instead of console.log() it leaves 0. Expected nothing "".
         strip: {
             main: {
-                options : {
+                options: {
                     // inline : true,
                     // replaceWith: "", // borrowed from removelogging, but doesn't work here.
-                    nodes : ['console.log', 'debug', 'debugger']
+                    nodes: ['console.log', 'debug', 'debugger']
                 },
                 src: 'assets/for_inject/index.js',
                 dest: 'dist/by_strip/index.js'
@@ -702,6 +705,7 @@ module.exports = function(grunt) {
                         message: 'Please enter your score for presentation?', // Question to ask the user, function needs to return a string,
                         default: 'A', // default value if nothing is entered
                         choices: ['A', 'B', 'C', 'D']
+
                         // validate: 'function(value)',
                         // filter: function(value),
                         // when: function(answers)
@@ -720,6 +724,7 @@ module.exports = function(grunt) {
             copySources: {
                 options: {
                     targetDir: 'dist/js/by_bower/bower_components'
+
                     // layout: 'byType',
                     // install: true,
                     // verbose: false,
@@ -844,8 +849,10 @@ module.exports = function(grunt) {
         // https://www.npmjs.org/package/grunt-verb
         verb: {
             readme: {
-                files: [
-                    {src: ['assets/docs/.verb.md'], dest: 'dist/docs/README_by_verb.md'}//,
+                files: [{
+                        src: ['assets/docs/.verb.md'],
+                        dest: 'dist/docs/README_by_verb.md'
+                    } //,
                     //{expand: true, cwd: 'assets/docs', src: ['**/*.tmpl.md'], dest: '.', ext: '.md'},
                 ]
             }
@@ -928,7 +935,7 @@ module.exports = function(grunt) {
                     height: 900,
                     outputfile: "dist/css/by_criticalcss/generated.css",
                     filename: "dist/css/by_less/bootstrap.css",
-                    buffer: 800*1024,
+                    buffer: 800 * 1024,
                     ignoreConsole: false
                 }
             }
@@ -971,12 +978,13 @@ module.exports = function(grunt) {
         },
 
         // https://github.com/tschaub/gh-pages
-        'gh-pages':{
+        'gh-pages': {
             options: {
                 base: 'assets/gh-gh',
                 // add: true, // If you want the task to add new src files but leave existing ones untouched
                 dotfiles: true,
                 message: 'gh-pages updated'
+
                 //, tag:'v1.0.2'
                 //, tag:'v%VERSION%'
             },
@@ -984,7 +992,26 @@ module.exports = function(grunt) {
         },
 
         githooks: {
-            'pre-commit': 'eslint'
+            options: {
+                // hashbang: '#!/usr/bin/env node' // default
+            },
+            viaNode: {
+                'pre-commit': 'eslint'
+            },
+            viaShell: {
+                options: {
+                    hashbang: '#!/bin/sh', // if omoted bt below added, then error about "##"
+                    template: './node_modules/grunt-githooks/templates/shell.hb', // if not provided, then template is taken for Node
+                    startMarker: '## LET THE FUN BEGIN', // if not provided, then shell error about "//"
+                    endMarker: '## PARTY IS OVER' // if not provided, then shell error about "//"
+                },
+                'pre-commit': 'eslint'
+            },
+            viaWindows: {
+                options: {
+                    hashbang: '#!/bin/sh' // ??? or Program Files/git/ ....
+                }
+            },
         }
 
     };
@@ -1049,7 +1076,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask("IAmLazy", [
         "jsonlint", "jslint:dev", "jshint:dev", "eslint",
-        "csslint",/*"lesslint", "scsslint",*/
+        "csslint", /*"lesslint", "scsslint",*/
         // "mdlint" // DOESN"T WORK (Aug-25-2016)
     ]);
 

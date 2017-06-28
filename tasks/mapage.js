@@ -10,7 +10,7 @@ module.exports = function (grunt) {
 		var context, targetConfig, template;
 
 		// we may need to use target.
-		target = target || 'create';
+		target == target || 'create';
 
 		this.requiresConfig('mapage.'+target); 
 		
