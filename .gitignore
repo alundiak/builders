@@ -12,6 +12,7 @@ pids
 *.seed
 .DS_Store
 ._*
+*lock.*
 
 
 # Custom, for this repo.

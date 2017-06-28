@@ -165,7 +165,7 @@ module.exports = function(grunt) {
                 options: {
                     banner: "/* I'm beautified file ever :) */\n",
                     beautify: {
-                        // line width that the beautifier will try to obey. 
+                        // line width that the beautifier will try to obey.
                         // It refers to the width of the line text (excluding indentation)
                         width: 100, // default 80
                         // More details here: https://github.com/mishoo/UglifyJS2
@@ -178,7 +178,7 @@ module.exports = function(grunt) {
             }
         },
 
-        // https://github.com/gruntjs/grunt-contrib-cssmin    
+        // https://github.com/gruntjs/grunt-contrib-cssmin
         cssmin: {
             target1: {
                 options: {
@@ -251,7 +251,7 @@ module.exports = function(grunt) {
                 //     ext: ".css"
                 // }]
 
-                // or this simple:    
+                // or this simple:
                 files: {
                     "dist/css/by_less/bootstrap.css": "bower_components/bootstrap/less/bootstrap.less"
                 }
@@ -313,7 +313,7 @@ module.exports = function(grunt) {
         },
 
         // https://github.com/gruntjs/grunt-contrib-compass
-        // requires to have Ruby (installed on Mac) 
+        // requires to have Ruby (installed on Mac)
         // optional "gem update --system" => updates ruby-gems to 2.4.4
         // requires "gem install sass" => v3.4.8
         // requires "gem install compass" => v1.0.1
@@ -326,7 +326,7 @@ module.exports = function(grunt) {
                 // bundleExec: false,
                 // watch: true
 
-                // httpPath    
+                // httpPath
                 // generatedImagesDir: '.tmp/assets/images/generated',
                 //relativeAssets: true,
                 imagesDir: 'assets/img',
@@ -360,21 +360,21 @@ module.exports = function(grunt) {
         // LINTERs section
         //
 
-        // https://www.npmjs.org/package/grunt-jsonlint    
+        // https://www.npmjs.org/package/grunt-jsonlint
         jsonlint: {
             sample: {
                 src: ['eslint.json', '.jshintrc']
             }
         },
 
-        // Suggest to read: 
+        // Suggest to read:
         // http://www.scottlogic.com/blog/2011/03/28/jslint-vs-jshint.html
         // https://web.archive.org/web/20130819215629/http://anton.kovalyov.net/2011/02/20/why-i-forked-jslint-to-jshint/
 
         // http://derpturkey.com/jslint-with-grunt/
-        // https://github.com/stephenmathieson/grunt-jslint    
+        // https://github.com/stephenmathieson/grunt-jslint
         // JSLINT is a JavaScript program that looks for problems in JavaScript programs. It is a code quality tool.
-        // JSLINT originnally by Douglas Crockford 
+        // JSLINT originnally by Douglas Crockford
         jslint: {
             dev: {
                 src: 'assets/for_inject/workflow.js',
@@ -383,7 +383,7 @@ module.exports = function(grunt) {
                 // ],
                 options: {
                     junit: 'dist/jslint/server-junit.xml', // VERY handy thing for CI server like Jenkins.
-                    errorsOnly: true, 
+                    errorsOnly: true,
                     log: 'dist/jslint/server-lint.log',
                     failOnError: false // For this project only !!!
                 },
@@ -463,7 +463,7 @@ module.exports = function(grunt) {
         // But there is another clone:
         // eslint-grunt by @iancmyers => https://www.npmjs.org/package/eslint-grunt
 
-        // https://github.com/gruntjs/grunt-contrib-csslint    
+        // https://github.com/gruntjs/grunt-contrib-csslint
         csslint: {
             strict: {
                 options: {
@@ -540,7 +540,7 @@ module.exports = function(grunt) {
                 dest: 'dist/by_removelogging/index.js'
             }
         },
-        // You can tell this task to keep specific logging statements 
+        // You can tell this task to keep specific logging statements
         // by adding the comment directive /*RemoveLogging:skip*/ after the statement:
 
         // https://github.com/jsoverson/grunt-strip | Last update in 2013 (Looks not maintained package)
@@ -735,14 +735,14 @@ module.exports = function(grunt) {
         // FILES, FODLERS, CLEAN, COPY, SYNC section
         //
 
-        // https://github.com/gruntjs/grunt-contrib-clean    
+        // https://github.com/gruntjs/grunt-contrib-clean
         clean: {
             target: {
                 src: ['dist', '.sass-cache']
             }
         },
 
-        // https://github.com/gruntjs/grunt-contrib-copy    
+        // https://github.com/gruntjs/grunt-contrib-copy
         copy: {
             main: {
                 flatten: true,
@@ -791,7 +791,7 @@ module.exports = function(grunt) {
         // https://github.com/iammerrick/grunt-parallel | Created in Feb-2013
         // In fact doing the same.
 
-        // https://github.com/gruntjs/grunt-contrib-watch        
+        // https://github.com/gruntjs/grunt-contrib-watch
         watch: {
             scripts: { // if files changed, run copy and sync
                 files: allBigBossFiles,
@@ -862,7 +862,7 @@ module.exports = function(grunt) {
             'README.md': {
                 options: {
                     data: {
-                        // Doesn't work. Here componentID is not visible anymore. 
+                        // Doesn't work. Here componentID is not visible anymore.
                         // Details: https://github.com/mathiasbynens/grunt-template/issues/9 reporeted by me.
                         componentName: 'no way?'
                     }
@@ -896,7 +896,7 @@ module.exports = function(grunt) {
                 src: ['dist/file_minified.js', 'dist/bootstrap.css']
             }
         },
-        
+
         //
         // CRITICAL CSS section
         //
@@ -918,7 +918,7 @@ module.exports = function(grunt) {
                 dest: 'dist/css/by_critical/generated.css'
             }
         },
-    
+
         // https://github.com/filamentgroup/grunt-criticalcss
         criticalcss: {
             target: {
@@ -981,6 +981,10 @@ module.exports = function(grunt) {
                 //, tag:'v%VERSION%'
             },
             src: '**' // src: '**/*'
+        },
+
+        githooks: {
+            'pre-commit': 'eslint'
         }
 
     };
@@ -989,7 +993,7 @@ module.exports = function(grunt) {
     // INIT PHASE
     //
     grunt.initConfig(config);
-    
+
     //
     // LOAD packages PHASE
     //
@@ -997,7 +1001,7 @@ module.exports = function(grunt) {
     // Simple, native approach:
     // grunt.loadNpmTasks('grunt-contrib-connect');
     // ...
-    
+
     // or
     // https://www.npmjs.org/package/matchdep
     // require('matchdep').filterDev('*').forEach(grunt.loadNpmTasks);

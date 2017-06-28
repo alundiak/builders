@@ -8,6 +8,8 @@ npm list -g --depth=0
 # or
 ls `npm root -g`
 
+npm install -g yarn
+
 # In most cases these 2 are very frequently used.
 npm install -g grunt-cli gulp bower
 
@@ -30,21 +32,24 @@ npm install -g shelljs
 # If u have many markdown files, and would like to lint them from any places.
 npm install -g mdlint
 
+npm install -g jslint jshint eslint jsonlint
+
 # Great for checking and updating (-u) local node_modules and bower_components.
-npm install -g npm-check-updates bower-check-updates
+npm install -g npm-check-updates #bower-check-updates - DEPRECATED. Replace Usage: ncu -m bower
 
 # Yeoman Generator of many JavaScript Frameworks
 npm install -g yo
 
 # Search using Google via CLI
-npm install -g node-cli-google 
+npm install -g node-cli-google
 # buggy (Aug-25-2016) => https://github.com/hwclass/node-cli-google/issues/17 + https://nodejs.org/api/util.html#util_util_format_format
 
 # Handy tool to test web page performance
 npm install -g webpagetest
 
 # Indeed awesome usage of above modules. It will fetch updates, and update json files.
-ncu -u && bcu -u
+ncu -u && npm install
+ncu -m "bower" && bower install
 
 
 #
