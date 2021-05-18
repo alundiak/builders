@@ -9,7 +9,6 @@
         "build2": "gulp scss-lint-2"
     },
     "devDependencies": {
-        "graceful-fs": "^4.2.6",
         "gulp": "^4.0.2",
         "gulp-scss-lint": "^1.0.0",
         "gulp-scsslint": "^0.0.5"

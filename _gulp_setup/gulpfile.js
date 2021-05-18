@@ -1,6 +1,14 @@
 var gulp = require('gulp');
+
 var scsslint1 = require('gulp-scss-lint');
+// https://github.com/juanfran/gulp-scss-lint
+
 var scsslint2 = require('gulp-scsslint');
+// https://github.com/noahmiller/gulp-scsslint
+
+// Both plugins require Ruby and [scss-lint](https://github.com/brigade/scss-lint) =>
+// `gem update --system`
+// `gem install scss_lint`
 
 
 // WORKS: https://github.com/juanfran/gulp-scss-lint
