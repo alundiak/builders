@@ -1,6 +1,7 @@
 {
     "name": "@lundiak/gulp-setup",
     "version": "0.0.1",
+    "private": true,
     "description": "Gulp bundling setup",
     "main": "",
     "scripts": {

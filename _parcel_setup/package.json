@@ -1,6 +1,7 @@
 {
     "name": "@lundiak/parcel-setup",
     "version": "0.0.1",
+    "private": true,
     "description": "Parcel bundling setup",
     "main": "",
     "scripts": {

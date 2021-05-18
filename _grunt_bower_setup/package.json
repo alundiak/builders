@@ -1,6 +1,7 @@
 {
     "name": "@lundiak/grunt-setup",
     "version": "1.0.4",
+    "private": true,
     "description": "Grunt with Bower bundling setup",
     "main": "index.js",
     "scripts": {

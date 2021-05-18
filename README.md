@@ -21,11 +21,12 @@
 
 Collection of well known build (bundling) tools examples:
 
-* [Grunt.JS](http://gruntjs.com/)
-* [Gulp.JS](http://gulpjs.com/)
+* [Grunt.JS](http://gruntjs.com/) - old
+* [Gulp.JS](http://gulpjs.com/) - kinda old
+* [Crom](https://news.ycombinator.com/item?id=11343557) - outdated/obsolete?
+* [Rollup](https://rollupjs.org)
 * [Parcel](https://parceljs.org)
-* [Rollup](https://rollupjs.org) #TODO
-* [Webpack](https://webpack.js.org/) #TODO
+* [Webpack](https://webpack.js.org/) - so far seems to be the best in trend.
 * [Browserify](http://browserify.org/) #TODO
 * [Brocolli](https://github.com/broccolijs/broccoli) #TODO
 * [Brunch](http://brunch.io/) #TODO
@@ -137,6 +138,7 @@ npm run build2
 
 ## Crom setup
 
+"Crom – A package manager without the package registry" - https://news.ycombinator.com/item?id=11343557
 I remember initially, that was somehow popular. Created by same author of D3.js - https://github.com/mbostock/crom
 But now this repo is NOT available.
 Other repos: https://github.com/mbostock/crom-test-bar, https://github.com/mbostock/crom-test-foo
@@ -145,6 +147,18 @@ Other repos: https://github.com/mbostock/crom-test-bar, https://github.com/mbost
 cd _crom_setup
 
 ```
+
+## Rollup setup
+
+```
+npm install -g rollup
+cd _rollup_setup
+npm run build
+```
+
+FYI:
+- https://github.com/rollup/rollup-starter-project
+
 
 ## Parcel setup
 
@@ -161,23 +175,18 @@ FYI:
 - https://parceljs.org/getting_started.html
 
 
-## Rollup setup
-
-```
-npm install -g rollup
-cd _rollup_setup
-npm run build
-```
-
-FYI:
-- https://github.com/rollup/rollup-starter-project
-
 
 ## Webpack setup
 
+- https://webpack.js.org/guides/getting-started/
+- https://webpack.js.org/configuration/dev-server/#root
+- https://github.com/webpack/webpack-dev-server
+
 ```
 cd _webpack_setup
-
+npm run build
+# or if needed
+npm start
 ```
 
 ## To Read

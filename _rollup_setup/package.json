@@ -1,6 +1,7 @@
 {
     "name": "@lundiak/rollup-setup",
     "version": "0.0.1",
+    "private": true,
     "description": "Rollup bundling setup",
     "main": "",
     "scripts": {
