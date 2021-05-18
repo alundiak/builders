@@ -108,7 +108,8 @@ Notes:
 - Due to the fact, that Grunt was popular in 2016-2017 year, and 2020-2021 it becomes rather not famous, many contrib packages are either outdated or at least upgraded to Grunt v1.x. So need for full installation need to use `--force` or `--legacy-peer-deps`. `npm audit` shows many warnings, but I am not sure it make sense to upgrade.
 - Not sure if `node-sass` v4.x installation has been failing in May-2021, but v6.x seems to be OK.
 - Not sure why but `node-sass-middleware` v0.11.0 is failing (node -v v16.1.0, node-gyp -v v3.8.0).
-
+- https://timonweb.com/javascript/how-to-fix-referenceerror-primordials-is-not-defined-error/
+    >gulp v3 doesn't work (as of now) under node v12, because it depends on graceful-fs@^3.0.0 which patches Node's fs module and that patch worked before node v12 just fine.
 
 **Git Hooks related to Grunt setup**:
 
