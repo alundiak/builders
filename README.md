@@ -137,6 +137,10 @@ npm run build2
 
 ## Crom setup
 
+I remember initially, that was somehow popular. Created by same author of D3.js - https://github.com/mbostock/crom
+But now this repo is NOT available.
+Other repos: https://github.com/mbostock/crom-test-bar, https://github.com/mbostock/crom-test-foo
+
 ```
 cd _crom_setup
 

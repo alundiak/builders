@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node server.js",
         "build": "grunt",
-        "criticalCss1": "connect:forCriticalCss",
+        "criticalCss1": "grunt connect:forCriticalCss",
         "criticalCss2": "grunt criticalcss",
         "criticalCss3": "grunt penthouse"
     },
