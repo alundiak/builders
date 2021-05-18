@@ -1099,8 +1099,10 @@ module.exports = function (grunt) {
 
     grunt.registerTask("IAmLazy", [
         "jsonlint", "jslint:dev", "jshint:dev", "eslint",
-        "csslint", /*"lesslint", "scsslint",*/
-        // "mdlint" // DOESN"T WORK (Aug-25-2016)
+        "csslint",
+        // "lesslint",
+        // "scsslint",
+        // "mdlint"
     ]);
 
     grunt.registerTask("DoAll", ["Because", "IAmLazy"]);
@@ -1112,7 +1114,7 @@ module.exports = function (grunt) {
 
 
     // var sass = require('node-sass'); // Node Sass (libsass)
-    // var sass = require('sass'); // Dart Sass
+    // var sass = require('sass'); // Dart Sass - // TODO - try
     // sass.renderFile({
     //     file: 'assets/styles/main.scss',
     //     outFile: 'dist/css/main.css',
