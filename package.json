@@ -8,8 +8,8 @@
     "build_with_grunt": "cd _grunt_bower_setup && grunt",
     "build_with_gulp": "cd _gulp_setup && npm run build1 && npm run build2",
     "build_with_parcel": "cd _gulp_setup && npm run build",
+    "build_with_rollup": "cd _rollup_setup && npm run build1 && npm run build2",
     "build_with_webpack": "cd _webpack_setup && webpack",
-    "build_with_rollup": "cd _rollup_setup && rollup",
     "build_with_broccoli": "cd _broccoli_setup && broccoli",
     "build_with_brunch": "cd _brunch_setup && brunch"
   },
@@ -22,7 +22,6 @@
     "browserify": "^16.2.3",
     "brunch": "^2.10.17",
     "jquery": "^3.2.1",
-    "rollup": "^0.66.6",
     "webpack": "^4.20.2"
   },
   "keywords": [

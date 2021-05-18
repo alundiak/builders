@@ -19,16 +19,16 @@
 [![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Falundiak%2Fbuilders)](https://twitter.com?url=https%3A%2F%2Fgithub.com%2Falundiak%2Fbuilders)
 
 
-Collection of well known build tools examples:
+Collection of well known build (bundling) tools examples:
 
 * [Grunt.JS](http://gruntjs.com/)
 * [Gulp.JS](http://gulpjs.com/)
+* [Parcel](https://parceljs.org)
+* [Rollup](https://rollupjs.org) #TODO
+* [Webpack](https://webpack.js.org/) #TODO
 * [Browserify](http://browserify.org/) #TODO
 * [Brocolli](https://github.com/broccolijs/broccoli) #TODO
 * [Brunch](http://brunch.io/) #TODO
-* [Webpack](https://webpack.js.org/) #TODO
-* [Rollup](https://rollupjs.org) #TODO
-* [Parcel](https://parceljs.org)
 
 
 ## Node.JS
@@ -36,21 +36,14 @@ If u don't have **Node.JS** install it from [official website](http://nodejs.org
 
 Note: `init.sh` install many tools, but step-by-step is below.
 
-## Grunt setup
-
-### Global CLI instruments/tools
-If u don't have **Grunt CLI**, **Bower** globally, do it - install them all :)
-```
-npm install grunt-cli bower -g
-```
-
-### Ruby's sass and compass gems (optional)
-Needed for 'grunt sass' and 'grunt compass' tasks based on Ruby parsing)
+## Global Ruby dependencies (optional for Grunt and Gulp setup)
+If code relies on `grunt sass`, `grunt compass`, `grunt scsslint` tasks, those are based on Ruby parsing.
 If u r not on Mac OS, Install Ruby from [official website](https://www.ruby-lang.org/en/).
 If u r on Mac OS u may need just to upgrade Ruby and ruby-gems.
-In both cases, u have then to install 2 gems:
+In both cases, u have then to install:
+
 ```
-gem install sass compass scss-lint
+gem install sass compass
 ```
 
 But. May-2021:
@@ -69,44 +62,19 @@ Ruby Sass has reached end-of-life and should no longer be used.
 
 ```
 
-```
-npm install && bower install
-```
-
-Start server:
-
-```
-grunt go
-```
-
-Grunt tasks executed one by one, if you hit
-```
-grunt DoAll
-```
-
-To test Critical/Penthouse stuff:
-```
-$1: grunt connect:forCriticalCss
-$2: grunt criticalcss or grunt penthouse
-```
-
-### Git Hooks related to Grunt setup
-
-Inside of folder `/Users/{user}/prj/builders/.git/hooks` added code for th `pre-commit` hook. It blocks `git commit`.
+Note: Bootstrap v5 has already migrated to Dart Sass. So it seems to be a trend.
+So maybe it's time for me to upgrade to https://github.com/sass/dart-sass
 
 
-## Gulp setup
-
-Global dependencies:
-
 ```
-npm install -g gulp
+#sudo gem install scss-lint
+sudo gem install scss_lint
 ```
 
-```
-sudo gem install scss-lint
-```
-will give:
+> WARNING: `scss-lint` has been renamed to `scss_lint` to follow proper RubyGems naming conventions. Update your Gemfile or relevant install scripts to install `scss_lint`.
+
+
+So final output:
 
 ```
 Fetching rainbow-2.2.2.gem
@@ -120,7 +88,42 @@ Overwrite the executable? [yN]  y
 WARNING: `scss-lint` has been renamed to `scss_lint` to follow proper RubyGems naming conventions. Update your Gemfile or relevant install scripts to install `scss_lint`.
 ```
 
-Local dependencies:
+
+## Grunt setup
+
+**Global dependencies**:
+
+```
+npm install -g grunt-cli bower
+```
+
+**Local dependencies**:
+
+```
+npm install --force && bower install
+npm run build
+```
+Notes:
+- For more npm/grunt commands, look to `Gruntfile.js`.
+- Due to the fact, that Grunt was popular in 2016-2017 year, and 2020-2021 it becomes rather not famous, many contrib packages are either outdated or at least upgraded to Grunt v1.x. So need for full installation need to use `--force` or `--legacy-peer-deps`. `npm audit` shows many warnings, but I am not sure it make sense to upgrade.
+- Not sure if `node-sass` v4.x installation has been failing in May-2021, but v6.x seems to be OK.
+- Not sure why but `node-sass-middleware` v0.11.0 is failing (node -v v16.1.0, node-gyp -v v3.8.0).
+
+
+**Git Hooks related to Grunt setup**:
+
+Inside of folder `/Users/{user}/prj/builders/.git/hooks` added code for th `pre-commit` hook. It blocks `git commit`.
+
+
+## Gulp setup
+
+**Global dependencies**:
+
+```
+npm install -g gulp
+```
+
+**Local dependencies**:
 
 ```
 cd _gulp_setup
@@ -138,8 +141,6 @@ cd _crom_setup
 
 ```
 
-## Rollup setup
-
 ## Parcel setup
 
 ```
@@ -151,6 +152,28 @@ npm run build
 
 And navigate to http://localhost:1234/
 
+FYI:
+- https://parceljs.org/getting_started.html
+
+
+## Rollup setup
+
+```
+npm install -g rollup
+cd _rollup_setup
+npm run build
+```
+
+FYI:
+- https://github.com/rollup/rollup-starter-project
+
+
+## Webpack setup
+
+```
+cd _webpack_setup
+
+```
 
 ## To Read
 
@@ -161,11 +184,11 @@ And navigate to http://localhost:1234/
 * http://www.smashingmagazine.com/2014/06/11/building-with-gulp/
 * https://medium.freecodecamp.org/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8
 
-# Inspired
+## Inspired
 
 By Automatization, CLI, shell scripting and Grunt.JS.
 
-# Similar repos:
+## Similar repos:
 
 * https://github.com/vigetlabs/blendid
 

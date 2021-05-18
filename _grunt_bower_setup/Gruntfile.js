@@ -297,17 +297,33 @@ module.exports = function (grunt) {
         // https://github.com/sass/node-sass
         // https://github.com/sass/node-sass-middleware
         // See example in the end of file.
-
         // And now, based on node-sass (libsass) we have grunt plugin:
         // https://github.com/sindresorhus/grunt-sass
-        sass: {
-            options: {
-                sourceMap: true
-            },
-            dist3: {
+        // May-2021: doesn't work because can't install 'node-sass-middleware'
+        // sass: {
+        //     options: {
+        //         sourceMap: true
+        //     },
+        //     dist3: {
+        //         files: {
+        //             'dist/css/by_libsass/main.css': 'assets/styles/main.scss',
+        //             'dist/css/by_libsass/test.css': 'assets/styles/test.sass'
+        //         }
+        //     }
+        // },
+
+        // Dart Sass + Grunt
+        // https://sass-lang.com/dart-sass
+        // https://github.com/laurenhamel/grunt-dart-sass
+        'dart-sass': {
+            dist4: {
+                options: {
+                    outputStyle: 'compressed',
+                    sourceMap: true
+                },
                 files: {
-                    'dist/css/by_libsass/main.css': 'assets/styles/main.scss',
-                    'dist/css/by_libsass/test.css': 'assets/styles/test.sass'
+                    'dist/css/by_dart-sass/main.css': 'assets/styles/main.scss',
+                    'dist/css/by_dart-sass/test.css': 'assets/styles/test.sass'
                 }
             }
         },
@@ -490,6 +506,12 @@ module.exports = function (grunt) {
         },
 
         // https://github.com/ahmednuaman/grunt-scss-lint
+        // 2021 also not really working, but:
+        // https://github.com/sds/scss-lint quote:
+        // The Sass core team is now building Sass in Dart instead of Ruby, and will no longer be maintaining the Ruby implementation unless a maintainer steps up to help.
+        // Since the SCSS-Lint project relies on the Ruby Sass implementation, this means it will eventually not support the latest Sass features and bug fixes.
+        // One alternative worthy of consideration is stylelint, which supports SCSS natively. If you want to use SCSS-specific rules in addition to stylelint core rules,
+        // you need to configure stylelint plugins like stylelint-scss or stylelint-order.
         scsslint: {
             allFiles: [
                 'assets/styles/*.{scss,sass}'
@@ -504,6 +526,7 @@ module.exports = function (grunt) {
         },
 
         // https://github.com/ChrisWren/grunt-mdlint
+        // May-2021 still old and not working.
         mdlint: {
             all: ['*.md']
         },
@@ -737,7 +760,7 @@ module.exports = function (grunt) {
         // There is almost the same clone package: https://github.com/curist/grunt-bower | Not tried.
 
         //
-        // FILES, FODLERS, CLEAN, COPY, SYNC section
+        // FILES, FOLDERS, CLEAN, COPY, SYNC section
         //
 
         // https://github.com/gruntjs/grunt-contrib-clean
@@ -1063,14 +1086,14 @@ module.exports = function (grunt) {
         "inject", "removelogging", "strip",
         "concat",
         "uglify", "less",
-        "sass", "compass",
+        /* "sass", */ "dart-sass", "compass",
         "cssmin",
         "exec", "shell",
         "devMode", "prodMode",
         "bower", "path",
         "copy",
         "mapage:create", // ONLY WITH SUFFIX :create. Otherwise task has issue. #TBD (Jan-23-2016 - changed a bit, but not yet real multitask).
-        "plato" // First time it will show warnings, because no JSON files, but it creates in fact, so 2nd run will ahve success.
+        "plato" // First time it will show warnings, because no JSON files, but it creates in fact, so 2nd run will have success.
         // After this command, we may try other gimme-like commands
     ]);
 
@@ -1088,7 +1111,8 @@ module.exports = function (grunt) {
     // shell.echo('JavaScript says Hello to Shell');
 
 
-    // var sass = require('node-sass');
+    // var sass = require('node-sass'); // Node Sass (libsass)
+    // var sass = require('sass'); // Dart Sass
     // sass.renderFile({
     //     file: 'assets/styles/main.scss',
     //     outFile: 'dist/css/main.css',

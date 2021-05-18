@@ -24,8 +24,12 @@ npm install -g nodemon
 # Another server to run sites locally. Not sure about watch and restart.
 npm install -g http-server
 
-# In case u need node-sass globally.
+# In case u need node-sass globally (based on libsass).
 npm install -g node-sass # last time I re-installing modules, this global module was kinda issue, so I uninstalled.
+
+# Another approach to reference libsass (I assume) but written in/via Dart
+# https://sass-lang.com/dart-sass
+npm install -g sass
 
 # In case u need Shell.JS globally.
 npm install -g shelljs
@@ -60,10 +64,13 @@ npm install -g webpack-cli
 # https://github.com/Polymer/tools/tree/master/packages/bundler
 npm install -g polymer-bundler
 
+# Rollup instalation
+npm install -g rollup
+
 #
 # Ruby Gems
 #
 # for Grunt setup
 sudo gem install sass compass
-# for Guulp setup
-sudo gem install scss-lint
+# for Gulp setup
+sudo gem install scss-lint # scss-lint renamed to scss_lint (due to RubyGems naming conventions)

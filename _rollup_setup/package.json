@@ -1,0 +1,17 @@
+{
+    "name": "@lundiak/rollup-setup",
+    "version": "0.0.1",
+    "description": "Rollup bundling setup",
+    "main": "",
+    "scripts": {
+        "start": "",
+        "build1": "rollup src/main.js --file dist/bundle.js --format umd --name 'myBundle'",
+        "build2": "rollup -c"
+    },
+    "dependencies": {
+        "rollup": "^2.48.0"
+    },
+    "author": "Andrii Lundiak",
+    "repository": "https://github.con/alundiak/builders.git",
+    "license": "ISC"
+}
