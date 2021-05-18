@@ -4,7 +4,7 @@ var scsslint2 = require('gulp-scsslint');
 
 
 // WORKS: https://github.com/juanfran/gulp-scss-lint
-gulp.task('scss-lint', function() {
+gulp.task('scss-lint-1', function () {
     gulp.src('styles/*.{scss,sass}')
         .pipe(scsslint1({
             // 'bundleExec': false, // - default.
@@ -13,14 +13,14 @@ gulp.task('scss-lint', function() {
 });
 
 // WORKS https://github.com/noahmiller/gulp-scsslint
-gulp.task('scss-lint-2', function() {
+gulp.task('scss-lint-2', function () {
     gulp.src('styles/*.{scss,sass}')
         .pipe(scsslint2({
-        	'config': '.scss-lint.yml'
+            'config': '.scss-lint.yml'
         }))
         .pipe(scsslint2.reporter());
 });
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     // place code for your default task here
 });

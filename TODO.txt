@@ -23,7 +23,7 @@ https://github.com/karma-runner/grunt-karma
 https://github.com/kmiyashiro/grunt-mocha
 https://github.com/angular/protractor
 https://www.npmjs.org/package/grunt-protractor-runner
-// Issue: When u have protractor instaleld, grunt-protractor-runner will be installed differently
+// Issue: When u have protractor installed, grunt-protractor-runner will be installed differently
 */
 
-Extract related configs into ssparate Objects/Files
+Extract related configs into separate Objects/Files

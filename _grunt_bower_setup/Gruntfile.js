@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     'use strict';
 
     var allBigBossFiles = [
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                     port: 3000,
                     keepalive: true,
                     hostname: 'localhost',
-                    middleware: function(connect) {
+                    middleware: function (connect) {
                         return [
                             require('connect-livereload')()
                             // checkForDownload,
@@ -117,8 +117,8 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     ext: 'js,html'
-                        // even so, doesn't watch index.html
-                        // even $ nodemon -e js,html - Doesn't
+                    // even so, doesn't watch index.html
+                    // even $ nodemon -e js,html - Doesn't
                 },
                 script: 'index.js'
             }
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
                 options: {
                     separator: ";",
                     banner: "/*\n" +
-                        "* NEW YEAR IS COMMING SOON\n" +
+                        "* NEW YEAR IS COMING SOON\n" +
                         "*/\n",
                     stripBanners: {
                         options: {
@@ -274,7 +274,7 @@ module.exports = function(grunt) {
                 options: {
                     style: 'expanded',
                     trace: true
-                        // cwd: 'styles'
+                    // cwd: 'styles'
                 },
                 files: {
                     // 'destination': 'source'
@@ -344,7 +344,7 @@ module.exports = function(grunt) {
                     // basePath: ''
                     // environment: 'development' // by default
                     cssDir: 'dist/css/by_compass/css_dev'
-                        // raw: 'preferred_syntax = :scss\n' // Use `raw` since it's not directly available
+                    // raw: 'preferred_syntax = :scss\n' // Use `raw` since it's not directly available
                 }
             },
             prod: {
@@ -375,7 +375,7 @@ module.exports = function(grunt) {
         // http://derpturkey.com/jslint-with-grunt/
         // https://github.com/stephenmathieson/grunt-jslint
         // JSLINT is a JavaScript program that looks for problems in JavaScript programs. It is a code quality tool.
-        // JSLINT originnally by Douglas Crockford
+        // JSLINT originally by Douglas Crockford
         jslint: {
             dev: {
                 src: 'assets/for_inject/workflow.js',
@@ -496,9 +496,9 @@ module.exports = function(grunt) {
             ],
             options: {
                 // emitError: true,
-                bundleExec: false, // we should use false, otehrwise it will not work visially in console.
+                bundleExec: false, // we should use false, otherwise it will not work visually in console.
                 config: '.scss-lint.yml', // Info about linters/rules: https://github.com/causes/scss-lint#linters
-                // reporterOutput: 'scss-lint-report.xml', // for Jenkinse
+                // reporterOutput: 'scss-lint-report.xml', // for Jenkins
                 colorizeOutput: true
             }
         },
@@ -595,7 +595,7 @@ module.exports = function(grunt) {
                 cwd: "./",
                 stderr: true,
                 stdout: true,
-                cmd: function() {
+                cmd: function () {
                     return "/bin/sh ./hello.sh";
                 }
             },
@@ -603,7 +603,7 @@ module.exports = function(grunt) {
                 cwd: "./",
                 stderr: true,
                 stdout: true,
-                cmd: function() {
+                cmd: function () {
                     return "echo $NODE_ENV; echo $USER;";
                 }
             }
@@ -649,7 +649,7 @@ module.exports = function(grunt) {
                 // Use SHA1 algorithm
                 algorithm: 'sha1',
 
-                process: function(content, files) {
+                process: function (content, files) {
                     // var yaml = require('js-yaml');
                     // var jf = require('jsonfile')
                     // var file = 'dist/files.json'
@@ -792,7 +792,7 @@ module.exports = function(grunt) {
                 tasks: ['csslint', 'lesslint', 'jsonlint', 'jslint:dev', 'jshint:dev', 'mdlint']
             }
         },
-        // There is grunt-contrib-parallel implemented sonner than concurrent
+        // There is grunt-contrib-parallel implemented sooner than concurrent
         // https://github.com/iammerrick/grunt-parallel | Created in Feb-2013
         // In fact doing the same.
 
@@ -850,9 +850,9 @@ module.exports = function(grunt) {
         verb: {
             readme: {
                 files: [{
-                        src: ['assets/docs/.verb.md'],
-                        dest: 'dist/docs/README_by_verb.md'
-                    } //,
+                    src: ['assets/docs/.verb.md'],
+                    dest: 'dist/docs/README_by_verb.md'
+                } //,
                     //{expand: true, cwd: 'assets/docs', src: ['**/*.tmpl.md'], dest: '.', ext: '.md'},
                 ]
             }
@@ -870,7 +870,7 @@ module.exports = function(grunt) {
                 options: {
                     data: {
                         // Doesn't work. Here componentID is not visible anymore.
-                        // Details: https://github.com/mathiasbynens/grunt-template/issues/9 reporeted by me.
+                        // Details: https://github.com/mathiasbynens/grunt-template/issues/9 reported by me.
                         componentName: 'no way?'
                     }
                 },
@@ -1000,7 +1000,7 @@ module.exports = function(grunt) {
             },
             viaShell: {
                 options: {
-                    hashbang: '#!/bin/sh', // if omoted bt below added, then error about "##"
+                    hashbang: '#!/bin/sh', // if omitted bt below added, then error about "##"
                     template: './node_modules/grunt-githooks/templates/shell.hb', // if not provided, then template is taken for Node
                     startMarker: '## LET THE FUN BEGIN', // if not provided, then shell error about "//"
                     endMarker: '## PARTY IS OVER' // if not provided, then shell error about "//"

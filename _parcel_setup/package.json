@@ -1,0 +1,16 @@
+{
+    "name": "@lundiak/parcel-setup",
+    "version": "0.0.1",
+    "description": "Parcel bundling setup",
+    "main": "",
+    "scripts": {
+        "start": "",
+        "build": "parcel src/index.html"
+    },
+    "dependencies": {
+        "parcel": "^2.0.0-beta.2"
+    },
+    "author": "Andrii Lundiak",
+    "repository": "https://github.con/alundiak/builders.git",
+    "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+    "name": "@lundiak/gulp-setup",
+    "version": "0.0.1",
+    "description": "Gulp bundling setup",
+    "main": "",
+    "scripts": {
+        "start": "",
+        "build1": "gulp scss-lint-1",
+        "build2": "gulp scss-lint-2"
+    },
+    "devDependencies": {
+        "gulp-scss-lint": "^1.0.0",
+        "gulp-scsslint": "0.0.5"
+    },
+    "dependencies": {
+        "gulp": "^4.0.2"
+    },
+    "author": "Andrii Lundiak",
+    "repository": "https://github.con/alundiak/builders.git",
+    "license": "ISC"
+}

@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# This file is optional for this project, and created as an example of good global packages to have in your work environment.
+# This file is optionaland EXPERIMENTL script for this project. Created as an example of good global packages to have in your work environment.
+# DO NOT EXECUTE it right away - read the code and comments.
 #
 
 # List of all globally installed NodeJS modules.
@@ -10,7 +11,7 @@ ls `npm root -g`
 
 npm install -g yarn
 
-# In most cases these 2 are very frequently used.
+# Most used.
 npm install -g grunt-cli gulp bower
 
 # Removes node_modules like a boss (sudo rm -rf).
@@ -43,16 +44,26 @@ npm install -g yo
 # Search using Google via CLI
 npm install -g node-cli-google
 # buggy (Aug-25-2016) => https://github.com/hwclass/node-cli-google/issues/17 + https://nodejs.org/api/util.html#util_util_format_format
+# May-18-2021 still buggy.
 
 # Handy tool to test web page performance
 npm install -g webpagetest
 
-# Indeed awesome usage of above modules. It will fetch updates, and update json files.
-ncu -u && npm install
-ncu -m "bower" && bower install
+# Parcel
+# https://parceljs.org/getting_started.html
+npm install -g parcel-bundler
 
+# https://webpack.js.org/guides/getting-started/ - maybe
+npm install -g webpack-cli
+
+# Polymer Bundeler seems to be replacement after Vulcanize?
+# https://github.com/Polymer/tools/tree/master/packages/bundler
+npm install -g polymer-bundler
 
 #
 # Ruby Gems
 #
-gem install sass compass scss-lint
+# for Grunt setup
+sudo gem install sass compass
+# for Guulp setup
+sudo gem install scss-lint
