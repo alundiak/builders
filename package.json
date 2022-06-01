@@ -6,20 +6,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "build_with_crom": "cd _crom_setup && tbd",
     "build_with_grunt": "cd _grunt_bower_setup && grunt",
-    "build_with_gulp": "cd _gulp_setup && npm run build1 && npm run build2",
-    "build_with_parcel": "cd _parcel_setup && npm run build",
-    "build_with_rollup": "cd _rollup_setup && npm run build1 && npm run build2",
-    "build_with_webpack": "cd _webpack_setup && npm run build",
-    "build_with_broccoli": "cd _broccoli_setup && broccoli",
-    "build_with_brunch": "cd _brunch_setup && brunch"
+    "build_with_gulp": "cd _gulp_setup && npm i &&  npm run build1 && npm run build2",
+    "build_with_parcel": "cd _parcel_setup && npm i && npm run build",
+    "build_with_rollup": "cd _rollup_setup && npm i && npm run build1 && npm run build2",
+    "build_with_webpack": "cd _webpack_setup && npm i && npm run build",
+    "build_with_other": "cd __other_setup && npm i && npm run build"
   },
   "devDependencies": {},
-  "dependencies": {
-    "broccoli": "^2.0.0",
-    "browserify": "^16.2.3",
-    "brunch": "^2.10.17"
-  },
+  "dependencies": {},
   "keywords": [
     "javascript",
     "nodejs",

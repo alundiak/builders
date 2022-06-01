@@ -1,0 +1,19 @@
+{
+    "name": "@lundiak/other-setup",
+    "version": "0.0.1",
+    "private": true,
+    "description": "Other bundling setups",
+    "main": "",
+    "scripts": {
+        "start": "",
+        "build": "tbd"
+    },
+    "dependencies": {
+        "broccoli": "^2.0.0",
+        "browserify": "^16.2.3",
+        "brunch": "^2.10.17"
+    },
+    "author": "Andrii Lundiak",
+    "repository": "https://github.con/alundiak/builders.git",
+    "license": "ISC"
+}
