@@ -6,13 +6,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "build_with_crom": "cd _crom_setup && tbd",
-    "build_with_grunt": "cd _grunt_bower_setup && grunt",
-    "build_with_gulp": "cd _gulp_setup && npm i &&  npm run build1 && npm run build2",
-    "build_with_parcel": "cd _parcel_setup && npm i && npm run build",
-    "build_with_rollup": "cd _rollup_setup && npm i && npm run build1 && npm run build2",
-    "build_with_webpack": "cd _webpack_setup && npm i && npm run build",
-    "build_with_other": "cd __other_setup && npm i && npm run build"
+    "crom": "cd _crom_setup && tbd",
+    "grunt": "cd _grunt_bower_setup && grunt",
+    "gulp": "cd _gulp_setup && npm i &&  npm run build1 && npm run build2",
+    "parcel": "cd _parcel_setup && npm i && npm run build",
+    "rollup": "cd _rollup_setup && npm i && npm run build1 && npm run build2",
+    "webpack": "cd _webpack_setup && npm i && npm run build",
+    "other": "cd __other_setup && npm i && npm run build"
   },
   "devDependencies": {},
   "dependencies": {},
