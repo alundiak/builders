@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "crom": "cd _crom_setup && tbd",
-    "grunt": "cd _grunt_bower_setup npm i && bower install && && grunt",
-    "gulp": "cd _gulp_setup && npm i &&  npm run build1 && npm run build2",
+    "grunt": "cd _grunt_bower_setup && npm i --force && bower install && grunt",
+    "gulp": "cd _gulp_setup && npm i && npm run build1 && npm run build2",
     "parcel": "cd _parcel_setup && npm i && npm run build",
     "rollup": "cd _rollup_setup && npm i && npm run build1 && npm run build2",
     "webpack": "cd _webpack_setup && npm i && npm run build",

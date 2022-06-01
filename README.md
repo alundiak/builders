@@ -92,17 +92,8 @@ WARNING: `scss-lint` has been renamed to `scss_lint` to follow proper RubyGems n
 
 ## Grunt setup
 
-**(optional) Global dependencies**:
-
 ```
-npm install -g grunt-cli bower
-```
-
-**Local dependencies**:
-
-```
-npm install --force && bower install
-npm run build
+npm run grunt
 ```
 Notes:
 - For more npm/grunt commands, look to `Gruntfile.js`.
