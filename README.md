@@ -92,7 +92,7 @@ WARNING: `scss-lint` has been renamed to `scss_lint` to follow proper RubyGems n
 
 ## Grunt setup
 
-**Global dependencies**:
+**(optional) Global dependencies**:
 
 ```
 npm install -g grunt-cli bower
@@ -119,19 +119,8 @@ Inside of folder `/Users/{user}/prj/builders/.git/hooks` added code for th `pre-
 
 ## Gulp setup
 
-**Global dependencies**:
-
 ```
-npm install -g gulp
-```
-
-**Local dependencies**:
-
-```
-cd _gulp_setup
-npm install
-npm run build1
-npm run build2
+npm run gulp
 ```
 
 
@@ -144,16 +133,13 @@ But now this repo is NOT available.
 Other repos: https://github.com/mbostock/crom-test-bar, https://github.com/mbostock/crom-test-foo
 
 ```
-cd _crom_setup
-
+npm run crom
 ```
 
 ## Rollup setup
 
 ```
-npm install -g rollup
-cd _rollup_setup
-npm run build
+npm run rollup
 ```
 
 FYI:
@@ -163,10 +149,7 @@ FYI:
 ## Parcel setup
 
 ```
-npm install -g parcel-bundler
-cd _parcel_setup
-npm install
-npm run build
+npm run parcel
 ```
 
 And navigate to http://localhost:1234/
@@ -183,10 +166,7 @@ FYI:
 - https://github.com/webpack/webpack-dev-server
 
 ```
-cd _webpack_setup
-npm run build
-# or if needed
-npm start
+npm run webpack
 ```
 
 ## To Read
@@ -207,7 +187,7 @@ By Automatization, CLI, shell scripting and Grunt.JS.
 * https://github.com/vigetlabs/blendid
 
 ## Author
-Andrii Lundiak aka [![landike](https://img.shields.io/twitter/follow/landike?style=social)](https://twitter.com/landike)
+Andrii Lundiak
 
 ## License
 Free
