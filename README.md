@@ -127,6 +127,12 @@ Other repos: https://github.com/mbostock/crom-test-bar, https://github.com/mbost
 npm run crom
 ```
 
+## Broccoli setup
+
+```
+npm run broccoli
+```
+
 ## Rollup setup
 
 ```

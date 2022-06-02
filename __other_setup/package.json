@@ -9,14 +9,10 @@
         "build": "tbd"
     },
     "dependencies": {
-        "broccoli": "^3.5.2",
-        "browserify": "^17.0.0",
-        "brunch": "^4.0.0"
+        "browserify": "^17.0.0"
     },
     "author": "Andrii Lundiak",
     "repository": "https://github.con/alundiak/builders.git",
     "license": "ISC",
-    "devDependencies": {
-        "ansi-html": "^0.0.9"
-    }
+    "devDependencies": {}
 }

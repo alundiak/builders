@@ -1,0 +1,22 @@
+{
+    "name": "@lundiak/broccoli-setup",
+    "version": "0.0.1",
+    "private": true,
+    "description": "Broccoli bundling setups",
+    "main": "",
+    "scripts": {
+        "start": "",
+        "build": "broccoli build --prod the-output"
+    },
+    "dependencies": {
+        "broccoli": "^3.1.1"
+    },
+    "author": "Andrii Lundiak",
+    "repository": "https://github.con/alundiak/builders.git",
+    "license": "ISC",
+    "devDependencies": {
+        "ansi-html": "^0.0.9",
+        "broccoli-cli": "^1.0.0",
+        "broccoli-funnel": "^3.0.8"
+    }
+}
