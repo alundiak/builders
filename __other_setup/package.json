@@ -15,5 +15,8 @@
     },
     "author": "Andrii Lundiak",
     "repository": "https://github.con/alundiak/builders.git",
-    "license": "ISC"
+    "license": "ISC",
+    "devDependencies": {
+        "ansi-html": "^0.0.9"
+    }
 }
