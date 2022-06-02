@@ -10,7 +10,7 @@
         "build2": "rollup -c"
     },
     "dependencies": {
-        "rollup": "^2.48.0"
+        "rollup": "^2.75.5"
     },
     "author": "Andrii Lundiak",
     "repository": "https://github.con/alundiak/builders.git",
