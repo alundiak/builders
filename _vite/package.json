@@ -1,0 +1,14 @@
+{
+  "name": "@alundiak/vite-experiments",
+  "version": "1.0.0",
+  "description": "TBD Native-ESM powered web dev build tool. It's fast.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^5.0.8"
+  }
+}
