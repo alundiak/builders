@@ -13,7 +13,11 @@
     "parcel": "cd _parcel_setup && npm i && npm run build",
     "rollup": "cd _rollup_setup && npm i && npm run build1 && npm run build2",
     "webpack": "cd _webpack_setup && npm i && npm run build",
-    "other": "cd __other_setup && npm i && npm run build"
+    "other": "cd __other_setup && npm i && npm run build",
+    "esbuild": "tbd",
+    "swc": "tbd",
+    "vite": "tbd",
+    "bun": "tbd"
   },
   "devDependencies": {},
   "dependencies": {},

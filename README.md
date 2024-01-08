@@ -1,23 +1,6 @@
 # JavaScript Build Tools Collection
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-[![Travis](https://img.shields.io/travis/joyent/node.svg)](https://github.com/alundiak/builders)
-[![Jenkins](https://img.shields.io/jenkins/s/https/jenkins.qa.ubuntu.com/precise-desktop-amd64_default.svg)](https://github.com/alundiak/builders)
-[![Coverity Scan](https://img.shields.io/coverity/scan/3997.svg)](https://github.com/alundiak/builders)
-
-[![Downloads](https://img.shields.io/npm/dm/builders)](https://github.com/alundiak/builders)
-[![Releases](https://img.shields.io/github/downloads/alundiak/builders/total)](https://github.com/alundiak/builders)
-
-
-[![node](https://img.shields.io/node/v/gh-badges.svg)](https://github.com/alundiak/builders)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/alundiak/builders)
-[![bower](https://img.shields.io/bower/v/bootstrap.svg)](https://github.com/alundiak/builders)
-
-[![David](https://img.shields.io/david/alundiak/builders)](https://github.com/alundiak/builders)
-[![David](https://img.shields.io/david/dev/alundiak/builders)](https://github.com/alundiak/builders)
-
-[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Falundiak%2Fbuilders)](https://twitter.com?url=https%3A%2F%2Fgithub.com%2Falundiak%2Fbuilders)
-
+This repo is an educational container for known Code Builders aka Compilers if the targeted language is JavaScript. I collect and experiment basic setups here, so that at any time I could look up and remind myself when needed.
 
 Collection of well known build (bundling) tools examples:
 
@@ -30,6 +13,15 @@ Collection of well known build (bundling) tools examples:
 * [Browserify](http://browserify.org/) #TODO
 * [Brocolli](https://github.com/broccolijs/broccoli) #TODO
 * [Brunch](http://brunch.io/) #TODO
+* [Vite](https://vitejs.dev/) #TODO
+* [Bun](https://bun.sh/) #TODO
+* [esbuild](https://esbuild.github.io/) #TODO
+* [SWC](https://swc.rs/) #TODO
+
+
+## Shields and badges
+
+Depends on build tool or environment using https://shields.io/badges HTML/Markdown code can be generated there.
 
 
 ## Node.JS
